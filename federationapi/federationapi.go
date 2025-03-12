@@ -7,6 +7,8 @@
 package federationapi
 
 import (
+	external "github.com/ike20013/dendrite/federationapi/internal"
+	"github.com/ike20013/dendrite/federationapi/storage"
 	"time"
 
 	"github.com/ike20013/dendrite/external/httputil"
@@ -19,7 +21,7 @@ import (
 	"github.com/ike20013/dendrite/external/caching"
 	federationAPI "github.com/ike20013/dendrite/federationapi/api"
 	"github.com/ike20013/dendrite/federationapi/consumers"
-	"github.com/ike20013/dendrite/federationapi/internal"
+	_ "github.com/ike20013/dendrite/federationapi/internal"
 	"github.com/ike20013/dendrite/federationapi/producers"
 	"github.com/ike20013/dendrite/federationapi/queue"
 	"github.com/ike20013/dendrite/federationapi/statistics"
@@ -65,7 +67,7 @@ func AddPublicRoutes(
 	// the constructor shape is a bit wonky in that it is not valid to AddPublicRoutes without a
 	// concrete impl of FederationInternalAPI as the public routes and the external API _should_
 	// be the same thing now.
-	f, ok := fedAPI.(*internal.FederationInternalAPI)
+	f, ok := fedAPI.(*external.FederationInternalAPI)
 	if !ok {
 		panic("federationapi.AddPublicRoutes called with a FederationInternalAPI impl which was not " +
 			"FederationInternalAPI. This is a programming error.")
@@ -92,7 +94,7 @@ func NewInternalAPI(
 	caches *caching.Caches,
 	keyRing *gomatrixserverlib.KeyRing,
 	resetBlacklist bool,
-) *internal.FederationInternalAPI {
+) *external.FederationInternalAPI {
 	cfg := &dendriteCfg.FederationAPI
 
 	federationDB, err := storage.NewDatabase(processContext.Context(), cm, &cfg.Database, caches, dendriteCfg.Global.IsLocalServerName)
@@ -166,5 +168,5 @@ func NewInternalAPI(
 	}
 	time.AfterFunc(time.Minute, cleanExpiredEDUs)
 
-	return internal.NewFederationInternalAPI(federationDB, cfg, rsAPI, federation, &stats, caches, queues, keyRing)
+	return external.NewFederationInternalAPI(federationDB, cfg, rsAPI, federation, &stats, caches, queues, keyRing)
 }
