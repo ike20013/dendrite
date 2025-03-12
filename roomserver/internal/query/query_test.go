@@ -12,12 +12,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/element-hq/dendrite/external/caching"
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/roomserver/storage"
-	"github.com/element-hq/dendrite/roomserver/types"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/test"
+	"github.com/ike20013/dendrite/external/caching"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/roomserver/storage"
+	"github.com/ike20013/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/test"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )

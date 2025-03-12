@@ -12,7 +12,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/element-hq/dendrite/syncapi/types"
+	"github.com/ike20013/dendrite/syncapi/types"
 )
 
 // UserDeviceStream represents a communication mechanism between the /sync request goroutine

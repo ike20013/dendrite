@@ -1,21 +1,21 @@
-package internal
+package external
 
 import (
 	"crypto/ed25519"
 	"encoding/base64"
 	"fmt"
+	"github.com/ike20013/dendrite/federationapi/storage/cache"
 	"sync"
 	"time"
 
-	"github.com/element-hq/dendrite/external/caching"
+	"github.com/ike20013/dendrite/external/caching"
 
-	"github.com/element-hq/dendrite/federationapi/api"
-	"github.com/element-hq/dendrite/federationapi/queue"
-	"github.com/element-hq/dendrite/federationapi/statistics"
-	"github.com/element-hq/dendrite/federationapi/storage"
-	"github.com/element-hq/dendrite/external/caching"
-	roomserverAPI "github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/setup/config"
+	"github.com/ike20013/dendrite/federationapi/api"
+	"github.com/ike20013/dendrite/federationapi/queue"
+	"github.com/ike20013/dendrite/federationapi/statistics"
+	"github.com/ike20013/dendrite/federationapi/storage"
+	roomserverAPI "github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/setup/config"
 	"github.com/matrix-org/gomatrix"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/fclient"

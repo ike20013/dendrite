@@ -11,9 +11,9 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/relayapi/storage/shared"
-	"github.com/element-hq/dendrite/test"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/relayapi/storage/shared"
+	"github.com/ike20013/dendrite/test"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/fclient"
 	"github.com/matrix-org/gomatrixserverlib/spec"

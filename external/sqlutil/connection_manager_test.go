@@ -4,10 +4,10 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/setup/process"
-	"github.com/element-hq/dendrite/test"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/setup/process"
+	"github.com/ike20013/dendrite/test"
 )
 
 func TestConnectionManager(t *testing.T) {

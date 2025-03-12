@@ -12,14 +12,14 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/element-hq/dendrite/userapi/api"
+	"github.com/ike20013/dendrite/userapi/api"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/fclient"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 
-	clientapi "github.com/element-hq/dendrite/clientapi/api"
-	"github.com/element-hq/dendrite/clientapi/auth/authtypes"
-	"github.com/element-hq/dendrite/userapi/types"
+	clientapi "github.com/ike20013/dendrite/clientapi/api"
+	"github.com/ike20013/dendrite/clientapi/auth/authtypes"
+	"github.com/ike20013/dendrite/userapi/types"
 )
 
 type RegistrationTokensTable interface {

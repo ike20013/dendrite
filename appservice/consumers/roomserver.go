@@ -21,12 +21,12 @@ import (
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/nats-io/nats.go"
 
-	"github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/roomserver/types"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/setup/jetstream"
-	"github.com/element-hq/dendrite/setup/process"
-	"github.com/element-hq/dendrite/syncapi/synctypes"
+	"github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/setup/jetstream"
+	"github.com/ike20013/dendrite/setup/process"
+	"github.com/ike20013/dendrite/syncapi/synctypes"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -243,7 +243,7 @@ func (s *appserviceState) backoffAndPause(err error) error {
 // appserviceIsInterestedInEvent returns a boolean depending on whether a given
 // event falls within one of a given application service's namespaces.
 //
-// TODO: This should be cached, see https://github.com/element-hq/dendrite/issues/1682
+// TODO: This should be cached, see https://github.com/ike20013/dendrite/issues/1682
 func (s *OutputRoomEventConsumer) appserviceIsInterestedInEvent(ctx context.Context, event *types.HeaderedEvent, appservice *config.ApplicationService) bool {
 	user := ""
 	userID, err := s.rsAPI.QueryUserIDForSender(ctx, event.RoomID(), event.SenderID())

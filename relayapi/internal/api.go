@@ -9,9 +9,9 @@ package internal
 import (
 	"sync"
 
-	"github.com/element-hq/dendrite/federationapi/producers"
-	"github.com/element-hq/dendrite/relayapi/storage"
-	rsAPI "github.com/element-hq/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/federationapi/producers"
+	"github.com/ike20013/dendrite/relayapi/storage"
+	rsAPI "github.com/ike20013/dendrite/roomserver/api"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/fclient"
 	"github.com/matrix-org/gomatrixserverlib/spec"

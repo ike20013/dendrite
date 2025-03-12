@@ -21,15 +21,15 @@ import (
 	"github.com/stretchr/testify/assert"
 	"gotest.tools/v3/poll"
 
-	"github.com/element-hq/dendrite/federationapi/producers"
-	rsAPI "github.com/element-hq/dendrite/roomserver/api"
-	rstypes "github.com/element-hq/dendrite/roomserver/types"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/setup/jetstream"
-	"github.com/element-hq/dendrite/setup/process"
-	"github.com/element-hq/dendrite/syncapi/types"
-	"github.com/element-hq/dendrite/test"
-	keyAPI "github.com/element-hq/dendrite/userapi/api"
+	"github.com/ike20013/dendrite/federationapi/producers"
+	rsAPI "github.com/ike20013/dendrite/roomserver/api"
+	rstypes "github.com/ike20013/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/setup/jetstream"
+	"github.com/ike20013/dendrite/setup/process"
+	"github.com/ike20013/dendrite/syncapi/types"
+	"github.com/ike20013/dendrite/test"
+	keyAPI "github.com/ike20013/dendrite/userapi/api"
 )
 
 const (

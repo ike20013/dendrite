@@ -9,26 +9,26 @@ package syncapi
 import (
 	"context"
 
-	"github.com/element-hq/dendrite/external/fulltext"
-	"github.com/element-hq/dendrite/external/httputil"
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/setup/process"
+	"github.com/ike20013/dendrite/external/fulltext"
+	"github.com/ike20013/dendrite/external/httputil"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/setup/process"
 	"github.com/sirupsen/logrus"
 
-	"github.com/element-hq/dendrite/external/caching"
+	"github.com/ike20013/dendrite/external/caching"
 
-	"github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/setup/jetstream"
-	userapi "github.com/element-hq/dendrite/userapi/api"
+	"github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/setup/jetstream"
+	userapi "github.com/ike20013/dendrite/userapi/api"
 
-	"github.com/element-hq/dendrite/syncapi/consumers"
-	"github.com/element-hq/dendrite/syncapi/notifier"
-	"github.com/element-hq/dendrite/syncapi/producers"
-	"github.com/element-hq/dendrite/syncapi/routing"
-	"github.com/element-hq/dendrite/syncapi/storage"
-	"github.com/element-hq/dendrite/syncapi/streams"
-	"github.com/element-hq/dendrite/syncapi/sync"
+	"github.com/ike20013/dendrite/syncapi/consumers"
+	"github.com/ike20013/dendrite/syncapi/notifier"
+	"github.com/ike20013/dendrite/syncapi/producers"
+	"github.com/ike20013/dendrite/syncapi/routing"
+	"github.com/ike20013/dendrite/syncapi/storage"
+	"github.com/ike20013/dendrite/syncapi/streams"
+	"github.com/ike20013/dendrite/syncapi/sync"
 )
 
 // AddPublicRoutes sets up and registers HTTP handlers for the SyncAPI

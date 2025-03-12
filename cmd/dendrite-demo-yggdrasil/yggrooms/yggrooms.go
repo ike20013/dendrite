@@ -11,8 +11,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/element-hq/dendrite/cmd/dendrite-demo-yggdrasil/yggconn"
-	"github.com/element-hq/dendrite/federationapi/api"
+	"github.com/ike20013/dendrite/cmd/dendrite-demo-yggdrasil/yggconn"
+	"github.com/ike20013/dendrite/federationapi/api"
 	"github.com/matrix-org/gomatrixserverlib/fclient"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/matrix-org/util"

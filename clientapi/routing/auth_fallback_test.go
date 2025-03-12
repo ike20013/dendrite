@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/element-hq/dendrite/clientapi/auth/authtypes"
-	"github.com/element-hq/dendrite/setup/config"
+	"github.com/ike20013/dendrite/clientapi/auth/authtypes"
+	"github.com/ike20013/dendrite/setup/config"
 )
 
 func Test_AuthFallback(t *testing.T) {

@@ -10,10 +10,10 @@ import (
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/matrix-org/util"
 
-	"github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/syncapi/synctypes"
-	"github.com/element-hq/dendrite/syncapi/types"
-	userapi "github.com/element-hq/dendrite/userapi/api"
+	"github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/syncapi/synctypes"
+	"github.com/ike20013/dendrite/syncapi/types"
+	userapi "github.com/ike20013/dendrite/userapi/api"
 )
 
 var (

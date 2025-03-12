@@ -7,7 +7,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/element-hq/dendrite/mediaapi/types"
+	"github.com/ike20013/dendrite/mediaapi/types"
 	"github.com/stretchr/testify/assert"
 )
 

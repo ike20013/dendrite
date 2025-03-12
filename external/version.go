@@ -9,10 +9,10 @@ import (
 // the final version string
 var version string
 
-// -ldflags "-X github.com/element-hq/dendrite/external.branch=master"
+// -ldflags "-X github.com/ike20013/dendrite/external.branch=master"
 var branch string
 
-// -ldflags "-X github.com/element-hq/dendrite/external.build=alpha"
+// -ldflags "-X github.com/ike20013/dendrite/external.build=alpha"
 var build string
 
 const (

@@ -11,26 +11,26 @@ import (
 	"testing"
 	"time"
 
-	"github.com/element-hq/dendrite/external/caching"
-	"github.com/element-hq/dendrite/external/httputil"
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/federationa
-	"github.com/element-hq/dendrite/roomserver"
-	"github.com/element-hq/dendrite/roomserver/api"
-	basepkg "github.com/element-hq/dendrite/setup/base"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/setup/jetstream"
-	"github.com/element-hq/dendrite/syncapi"
+	"github.com/ike20013/dendrite/external/caching"
+	"github.com/ike20013/dendrite/external/httputil"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/federationa
+	"github.com/ike20013/dendrite/roomserver"
+	"github.com/ike20013/dendrite/roomserver/api"
+	basepkg "github.com/ike20013/dendrite/setup/base"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/setup/jetstream"
+	"github.com/ike20013/dendrite/syncapi"
 	"github.com/matrix-org/gomatrixserverlib/fclient"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/matrix-org/util"
 	"github.com/tidwall/gjson"
 
-	capi "github.com/element-hq/dendrite/clientapi/api"
-	"github.com/element-hq/dendrite/test"
-	"github.com/element-hq/dendrite/test/testrig"
-	"github.com/element-hq/dendrite/userapi"
-	uapi "github.com/element-hq/dendrite/userapi/api"
+	capi "github.com/ike20013/dendrite/clientapi/api"
+	"github.com/ike20013/dendrite/test"
+	"github.com/ike20013/dendrite/test/testrig"
+	"github.com/ike20013/dendrite/userapi"
+	uapi "github.com/ike20013/dendrite/userapi/api"
 )
 
 func TestAdminCreateToken(t *testing.T) {

@@ -13,15 +13,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/element-hq/dendrite/syncapi/synctypes"
-	"github.com/element-hq/dendrite/userapi/types"
+	"github.com/ike20013/dendrite/syncapi/synctypes"
+	"github.com/ike20013/dendrite/userapi/types"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/fclient"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 
-	clientapi "github.com/element-hq/dendrite/clientapi/api"
-	"github.com/element-hq/dendrite/clientapi/auth/authtypes"
-	"github.com/element-hq/dendrite/external/pushrules"
+	clientapi "github.com/ike20013/dendrite/clientapi/api"
+	"github.com/ike20013/dendrite/clientapi/auth/authtypes"
+	"github.com/ike20013/dendrite/external/pushrules"
 )
 
 // UserInternalAPI is the external API for information about users and devices.

@@ -22,15 +22,15 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/sirupsen/logrus"
 
-	"github.com/element-hq/dendrite/external/sqlutil"
-	roomserverAPI "github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/syncapi/internal"
-	"github.com/element-hq/dendrite/syncapi/notifier"
-	"github.com/element-hq/dendrite/syncapi/storage"
-	"github.com/element-hq/dendrite/syncapi/streams"
-	"github.com/element-hq/dendrite/syncapi/types"
-	userapi "github.com/element-hq/dendrite/userapi/api"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	roomserverAPI "github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/syncapi/internal"
+	"github.com/ike20013/dendrite/syncapi/notifier"
+	"github.com/ike20013/dendrite/syncapi/storage"
+	"github.com/ike20013/dendrite/syncapi/streams"
+	"github.com/ike20013/dendrite/syncapi/types"
+	userapi "github.com/ike20013/dendrite/userapi/api"
 )
 
 // RequestPool manages HTTP long-poll connections for /sync

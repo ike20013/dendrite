@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/element-hq/dendrite/test"
+	"github.com/ike20013/dendrite/test"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/stretchr/testify/assert"
 )

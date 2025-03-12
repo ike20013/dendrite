@@ -16,7 +16,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/element-hq/dendrite/roomserver/storage/tables"
+	"github.com/ike20013/dendrite/roomserver/storage/tables"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/sirupsen/logrus"
 )

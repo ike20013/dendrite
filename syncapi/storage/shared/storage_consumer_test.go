@@ -5,12 +5,12 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/syncapi/storage"
-	"github.com/element-hq/dendrite/syncapi/synctypes"
-	"github.com/element-hq/dendrite/syncapi/types"
-	"github.com/element-hq/dendrite/test"
-	"github.com/element-hq/dendrite/test/testrig"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/syncapi/storage"
+	"github.com/ike20013/dendrite/syncapi/synctypes"
+	"github.com/ike20013/dendrite/syncapi/types"
+	"github.com/ike20013/dendrite/test"
+	"github.com/ike20013/dendrite/test/testrig"
 )
 
 func newSyncDB(t *testing.T, dbType test.DBType) (storage.Database, func()) {

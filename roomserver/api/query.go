@@ -18,9 +18,9 @@ import (
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/matrix-org/util"
 
-	"github.com/element-hq/dendrite/clientapi/auth/authtypes"
-	"github.com/element-hq/dendrite/roomserver/types"
-	"github.com/element-hq/dendrite/syncapi/synctypes"
+	"github.com/ike20013/dendrite/clientapi/auth/authtypes"
+	"github.com/ike20013/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/syncapi/synctypes"
 )
 
 // QueryLatestEventsAndStateRequest is a request to QueryLatestEventsAndState

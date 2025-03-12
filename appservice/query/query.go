@@ -18,9 +18,9 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/element-hq/dendrite/appservice/api"
-	"github.com/element-hq/dendrite/external"
-	"github.com/element-hq/dendrite/setup/config"
+	"github.com/ike20013/dendrite/appservice/api"
+	"github.com/ike20013/dendrite/external"
+	"github.com/ike20013/dendrite/setup/config"
 )
 
 // AppServiceQueryAPI is an implementation of api.AppServiceQueryAPI

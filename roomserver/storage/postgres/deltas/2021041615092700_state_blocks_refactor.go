@@ -11,7 +11,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/element-hq/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/roomserver/types"
 	"github.com/lib/pq"
 	"github.com/matrix-org/util"
 	"github.com/sirupsen/logrus"

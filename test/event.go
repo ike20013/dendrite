@@ -12,7 +12,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/element-hq/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/roomserver/types"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )

@@ -6,20 +6,20 @@ import (
 	"testing"
 	"time"
 
-	"github.com/element-hq/dendrite/external/caching"
-	"github.com/element-hq/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/external/caching"
+	"github.com/ike20013/dendrite/roomserver/types"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/stretchr/testify/assert"
 	ed255192 "golang.org/x/crypto/ed25519"
 
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/roomserver/storage/postgres"
-	"github.com/element-hq/dendrite/roomserver/storage/shared"
-	"github.com/element-hq/dendrite/roomserver/storage/sqlite3"
-	"github.com/element-hq/dendrite/roomserver/storage/tables"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/test"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/roomserver/storage/postgres"
+	"github.com/ike20013/dendrite/roomserver/storage/shared"
+	"github.com/ike20013/dendrite/roomserver/storage/sqlite3"
+	"github.com/ike20013/dendrite/roomserver/storage/tables"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/test"
 )
 
 func mustCreateRoomserverDatabase(t *testing.T, dbType test.DBType) (*shared.Database, func()) {

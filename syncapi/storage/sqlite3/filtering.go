@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/element-hq/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/external/sqlutil"
 )
 
 type FilterOrder int

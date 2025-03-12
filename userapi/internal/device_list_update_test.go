@@ -19,20 +19,20 @@ import (
 	"testing"
 	"time"
 
-	"github.com/element-hq/dendrite/external/caching"
-	"github.com/element-hq/dendrite/external/sqlutil"
-	api2 "github.com/element-hq/dendrite/federationapi/api"
-	"github.com/element-hq/dendrite/fed
+	"github.com/ike20013/dendrite/external/caching"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	api2 "github.com/ike20013/dendrite/federationapi/api"
+	"github.com/ike20013/dendrite/fed
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/fclient"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 
-	roomserver "github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/setup/process"
-	"github.com/element-hq/dendrite/test"
-	"github.com/element-hq/dendrite/userapi/api"
-	"github.com/element-hq/dendrite/userapi/storage"
+	roomserver "github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/setup/process"
+	"github.com/ike20013/dendrite/test"
+	"github.com/ike20013/dendrite/userapi/api"
+	"github.com/ike20013/dendrite/userapi/storage"
 )
 
 var (

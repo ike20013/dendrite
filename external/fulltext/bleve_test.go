@@ -10,12 +10,12 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/element-hq/dendrite/setup/process"
+	"github.com/ike20013/dendrite/setup/process"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/matrix-org/util"
 
-	"github.com/element-hq/dendrite/external/fulltext"
-	"github.com/element-hq/dendrite/setup/config"
+	"github.com/ike20013/dendrite/external/fulltext"
+	"github.com/ike20013/dendrite/setup/config"
 )
 
 func mustOpenIndex(t *testing.T, tempDir string) (*fulltext.Search, *process.ProcessContext) {

@@ -15,7 +15,7 @@ import (
 	"sync"
 	"time"
 
-	userapi "github.com/element-hq/dendrite/userapi/api"
+	userapi "github.com/ike20013/dendrite/userapi/api"
 	"github.com/matrix-org/gomatrixserverlib/fclient"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 
@@ -26,16 +26,16 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/sirupsen/logrus"
 
-	fedapi "github.com/element-hq/dendrite/federationapi/api"
-	"github.com/element-hq/dendrite/roomserver/acls"
-	"github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/roomserver/internal/query"
-	"github.com/element-hq/dendrite/roomserver/producers"
-	"github.com/element-hq/dendrite/roomserver/storage"
-	"github.com/element-hq/dendrite/roomserver/types"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/setup/jetstream"
-	"github.com/element-hq/dendrite/setup/process"
+	fedapi "github.com/ike20013/dendrite/federationapi/api"
+	"github.com/ike20013/dendrite/roomserver/acls"
+	"github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/roomserver/internal/query"
+	"github.com/ike20013/dendrite/roomserver/producers"
+	"github.com/ike20013/dendrite/roomserver/storage"
+	"github.com/ike20013/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/setup/jetstream"
+	"github.com/ike20013/dendrite/setup/process"
 )
 
 // Inputer is responsible for consuming from the roomserver input

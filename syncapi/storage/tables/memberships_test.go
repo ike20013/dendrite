@@ -8,14 +8,14 @@ import (
 
 	"github.com/matrix-org/gomatrixserverlib/spec"
 
-	"github.com/element-hq/dendrite/external/sqlutil"
-	rstypes "github.com/element-hq/dendrite/roomserver/types"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/syncapi/storage/postgres"
-	"github.com/element-hq/dendrite/syncapi/storage/sqlite3"
-	"github.com/element-hq/dendrite/syncapi/storage/tables"
-	"github.com/element-hq/dendrite/syncapi/types"
-	"github.com/element-hq/dendrite/test"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	rstypes "github.com/ike20013/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/syncapi/storage/postgres"
+	"github.com/ike20013/dendrite/syncapi/storage/sqlite3"
+	"github.com/ike20013/dendrite/syncapi/storage/tables"
+	"github.com/ike20013/dendrite/syncapi/types"
+	"github.com/ike20013/dendrite/test"
 )
 
 func newMembershipsTable(t *testing.T, dbType test.DBType) (tables.Memberships, *sql.DB, func()) {

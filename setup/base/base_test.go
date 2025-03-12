@@ -12,11 +12,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/element-hq/dendrite/external"
-	"github.com/element-hq/dendrite/external/httputil"
-	basepkg "github.com/element-hq/dendrite/setup/base"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/setup/process"
+	"github.com/ike20013/dendrite/external"
+	"github.com/ike20013/dendrite/external/httputil"
+	basepkg "github.com/ike20013/dendrite/setup/base"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/setup/process"
 	"github.com/stretchr/testify/assert"
 )
 

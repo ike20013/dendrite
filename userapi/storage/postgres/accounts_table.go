@@ -12,11 +12,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/element-hq/dendrite/clientapi/userutil"
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/userapi/api"
-	"github.com/element-hq/dendrite/userapi/storage/postgres/deltas"
-	"github.com/element-hq/dendrite/userapi/storage/tables"
+	"github.com/ike20013/dendrite/clientapi/userutil"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/userapi/api"
+	"github.com/ike20013/dendrite/userapi/storage/postgres/deltas"
+	"github.com/ike20013/dendrite/userapi/storage/tables"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 
 	log "github.com/sirupsen/logrus"

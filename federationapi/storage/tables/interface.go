@@ -10,7 +10,7 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/element-hq/dendrite/federationapi/types"
+	"github.com/ike20013/dendrite/federationapi/types"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )

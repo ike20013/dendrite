@@ -1,4 +1,4 @@
-package internal
+package external
 
 import (
 	"context"
@@ -15,12 +15,12 @@ import (
 	"github.com/matrix-org/util"
 	"github.com/sirupsen/logrus"
 
-	"github.com/element-hq/dendrite/federationapi/api"
-	"github.com/element-hq/dendrite/federationapi/consumers"
-	"github.com/element-hq/dendrite/federationapi/statistics"
-	roomserverAPI "github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/roomserver/types"
-	"github.com/element-hq/dendrite/roomserver/version"
+	"github.com/ike20013/dendrite/federationapi/api"
+	"github.com/ike20013/dendrite/federationapi/consumers"
+	"github.com/ike20013/dendrite/federationapi/statistics"
+	roomserverAPI "github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/roomserver/version"
 )
 
 // PerformLeaveRequest implements api.FederationInternalAPI

@@ -13,11 +13,11 @@ import (
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 
-	"github.com/element-hq/dendrite/external/eventutil"
-	"github.com/element-hq/dendrite/roomserver/api"
-	rstypes "github.com/element-hq/dendrite/roomserver/types"
-	"github.com/element-hq/dendrite/syncapi/synctypes"
-	"github.com/element-hq/dendrite/syncapi/types"
+	"github.com/ike20013/dendrite/external/eventutil"
+	"github.com/ike20013/dendrite/roomserver/api"
+	rstypes "github.com/ike20013/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/syncapi/synctypes"
+	"github.com/ike20013/dendrite/syncapi/types"
 )
 
 type AccountData interface {

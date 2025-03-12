@@ -14,20 +14,20 @@ import (
 	"testing"
 	"time"
 
-	"github.com/element-hq/dendrite/setup/process"
-	"github.com/element-hq/dendrite/syncapi/synctypes"
 	"github.com/gorilla/mux"
+	"github.com/ike20013/dendrite/setup/process"
+	"github.com/ike20013/dendrite/syncapi/synctypes"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 
-	"github.com/element-hq/dendrite/external/hooks"
-	"github.com/element-hq/dendrite/external/httputil"
-	"github.com/element-hq/dendrite/external/sqlutil"
-	roomserver "github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/roomserver/types"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/setup/mscs/msc2836"
-	userapi "github.com/element-hq/dendrite/userapi/api"
+	"github.com/ike20013/dendrite/external/hooks"
+	"github.com/ike20013/dendrite/external/httputil"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	roomserver "github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/setup/mscs/msc2836"
+	userapi "github.com/ike20013/dendrite/userapi/api"
 )
 
 var (

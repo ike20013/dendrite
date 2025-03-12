@@ -1,11 +1,11 @@
-package internal
+package external
 
 import (
 	"context"
 	"fmt"
 	"time"
 
-	"github.com/element-hq/dendrite/federationapi/api"
+	"github.com/ike20013/dendrite/federationapi/api"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/matrix-org/util"

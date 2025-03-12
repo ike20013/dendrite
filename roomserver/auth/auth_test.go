@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/test"
+	"github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/test"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )

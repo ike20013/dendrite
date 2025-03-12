@@ -15,7 +15,7 @@ import (
 	"strconv"
 	"time"
 
-	syncAPITypes "github.com/element-hq/dendrite/syncapi/types"
+	syncAPITypes "github.com/ike20013/dendrite/syncapi/types"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 
 	"github.com/matrix-org/gomatrixserverlib"
@@ -23,13 +23,13 @@ import (
 	"github.com/sirupsen/logrus"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/element-hq/dendrite/federationapi/queue"
-	"github.com/element-hq/dendrite/federationapi/storage"
-	"github.com/element-hq/dendrite/federationapi/types"
-	"github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/setup/jetstream"
-	"github.com/element-hq/dendrite/setup/process"
+	"github.com/ike20013/dendrite/federationapi/queue"
+	"github.com/ike20013/dendrite/federationapi/storage"
+	"github.com/ike20013/dendrite/federationapi/types"
+	"github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/setup/jetstream"
+	"github.com/ike20013/dendrite/setup/process"
 )
 
 // OutputRoomEventConsumer consumes events that originated in the room server.

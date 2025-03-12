@@ -12,8 +12,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/element-hq/dendrite/external"
-	"github.com/element-hq/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/external"
+	"github.com/ike20013/dendrite/external/sqlutil"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )

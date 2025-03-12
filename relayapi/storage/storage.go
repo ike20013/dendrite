@@ -12,11 +12,11 @@ package storage
 import (
 	"fmt"
 
-	"github.com/element-hq/dendrite/external/caching"
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/relayapi/storage/postgres"
-	"github.com/element-hq/dendrite/relayapi/storage/sqlite3"
-	"github.com/element-hq/dendrite/setup/config"
+	"github.com/ike20013/dendrite/external/caching"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/relayapi/storage/postgres"
+	"github.com/ike20013/dendrite/relayapi/storage/sqlite3"
+	"github.com/ike20013/dendrite/setup/config"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )
 

@@ -13,14 +13,14 @@ import (
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/matrix-org/util"
 
-	"github.com/element-hq/dendrite/external/caching"
-	"github.com/element-hq/dendrite/external/fulltext"
-	"github.com/element-hq/dendrite/external/httputil"
-	"github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/syncapi/storage"
-	"github.com/element-hq/dendrite/syncapi/sync"
-	userapi "github.com/element-hq/dendrite/userapi/api"
+	"github.com/ike20013/dendrite/external/caching"
+	"github.com/ike20013/dendrite/external/fulltext"
+	"github.com/ike20013/dendrite/external/httputil"
+	"github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/syncapi/storage"
+	"github.com/ike20013/dendrite/syncapi/sync"
+	userapi "github.com/ike20013/dendrite/userapi/api"
 )
 
 // Setup configures the given mux with sync-server listeners

@@ -7,20 +7,20 @@
 package clientapi
 
 import (
-	"github.com/element-hq/dendrite/external/httputil"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/setup/process"
-	userapi "github.com/element-hq/dendrite/userapi/api"
+	"github.com/ike20013/dendrite/external/httputil"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/setup/process"
+	userapi "github.com/ike20013/dendrite/userapi/api"
 	"github.com/matrix-org/gomatrixserverlib/fclient"
 
-	appserviceAPI "github.com/element-hq/dendrite/appservice/api"
-	"github.com/element-hq/dendrite/clientapi/api"
-	"github.com/element-hq/dendrite/clientapi/producers"
-	"github.com/element-hq/dendrite/clientapi/routing"
-	"github.com/element-hq/dendrite/external/transactions"
-	federationAPI "github.com/element-hq/dendrite/federationapi/api"
-	roomserverAPI "github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/setup/jetstream"
+	appserviceAPI "github.com/ike20013/dendrite/appservice/api"
+	"github.com/ike20013/dendrite/clientapi/api"
+	"github.com/ike20013/dendrite/clientapi/producers"
+	"github.com/ike20013/dendrite/clientapi/routing"
+	"github.com/ike20013/dendrite/external/transactions"
+	federationAPI "github.com/ike20013/dendrite/federationapi/api"
+	roomserverAPI "github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/setup/jetstream"
 )
 
 // AddPublicRoutes sets up and registers HTTP handlers for the ClientAPI component.

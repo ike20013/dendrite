@@ -16,11 +16,11 @@ import (
 	// Import the postgres database driver.
 	_ "github.com/lib/pq"
 
-	"github.com/element-hq/dendrite/external/caching"
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/roomserver/storage/postgres/deltas"
-	"github.com/element-hq/dendrite/roomserver/storage/shared"
-	"github.com/element-hq/dendrite/setup/config"
+	"github.com/ike20013/dendrite/external/caching"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/roomserver/storage/postgres/deltas"
+	"github.com/ike20013/dendrite/roomserver/storage/shared"
+	"github.com/ike20013/dendrite/setup/config"
 )
 
 // A Database is used to store room events and stream offsets.

@@ -10,9 +10,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/element-hq/dendrite/external"
-	"github.com/element-hq/dendrite/external/eventutil"
 	"github.com/gorilla/mux"
+	"github.com/ike20013/dendrite/external"
+	"github.com/ike20013/dendrite/external/eventutil"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/matrix-org/util"
@@ -20,13 +20,13 @@ import (
 	"github.com/sirupsen/logrus"
 	"golang.org/x/exp/constraints"
 
-	clientapi "github.com/element-hq/dendrite/clientapi/api"
-	"github.com/element-hq/dendrite/external/httputil"
-	roomserverAPI "github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/setup/jetstream"
-	"github.com/element-hq/dendrite/userapi/api"
-	userapi "github.com/element-hq/dendrite/userapi/api"
+	clientapi "github.com/ike20013/dendrite/clientapi/api"
+	"github.com/ike20013/dendrite/external/httputil"
+	roomserverAPI "github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/setup/jetstream"
+	"github.com/ike20013/dendrite/userapi/api"
+	userapi "github.com/ike20013/dendrite/userapi/api"
 )
 
 var validRegistrationTokenRegex = regexp.MustCompile("^[[:ascii:][:digit:]_]*$")

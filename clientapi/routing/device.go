@@ -12,9 +12,9 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/element-hq/dendrite/clientapi/auth"
-	"github.com/element-hq/dendrite/clientapi/httputil"
-	"github.com/element-hq/dendrite/userapi/api"
+	"github.com/ike20013/dendrite/clientapi/auth"
+	"github.com/ike20013/dendrite/clientapi/httputil"
+	"github.com/ike20013/dendrite/userapi/api"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/matrix-org/util"

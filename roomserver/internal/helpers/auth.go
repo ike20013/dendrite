@@ -14,10 +14,10 @@ import (
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 
-	"github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/roomserver/state"
-	"github.com/element-hq/dendrite/roomserver/storage"
-	"github.com/element-hq/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/roomserver/state"
+	"github.com/ike20013/dendrite/roomserver/storage"
+	"github.com/ike20013/dendrite/roomserver/types"
 )
 
 // CheckForSoftFail returns true if the event should be soft-failed

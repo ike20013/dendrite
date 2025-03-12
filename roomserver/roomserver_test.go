@@ -7,35 +7,35 @@ import (
 	"testing"
 	"time"
 
-	"github.com/element-hq/dendrite/external/caching"
-	"github.com/element-hq/dendrite/external/eventutil"
-	"github.com/element-hq/dendrite/external/httputil"
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/federationapi/statistics"
-	"github.com/element-hq/dendrite/roomserver/internal/input"
+	"github.com/ike20013/dendrite/external/caching"
+	"github.com/ike20013/dendrite/external/eventutil"
+	"github.com/ike20013/dendrite/external/httputil"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/federationapi/statistics"
+	"github.com/ike20013/dendrite/roomserver/internal/input"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/nats-io/nats.go"
 	"github.com/stretchr/testify/assert"
 	"github.com/tidwall/gjson"
 
-	"github.com/element-hq/dendrite/roomserver/acls"
-	"github.com/element-hq/dendrite/roomserver/state"
-	"github.com/element-hq/dendrite/roomserver/types"
-	"github.com/element-hq/dendrite/userapi"
+	"github.com/ike20013/dendrite/roomserver/acls"
+	"github.com/ike20013/dendrite/roomserver/state"
+	"github.com/ike20013/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/userapi"
 
-	userAPI "github.com/element-hq/dendrite/userapi/api"
+	userAPI "github.com/ike20013/dendrite/userapi/api"
 
 	"github.com/matrix-org/gomatrixserverlib"
 
-	"github.com/element-hq/dendrite/federationapi"
-	"github.com/element-hq/dendrite/setup/jetstream"
-	"github.com/element-hq/dendrite/syncapi"
+	"github.com/ike20013/dendrite/federationapi"
+	"github.com/ike20013/dendrite/setup/jetstream"
+	"github.com/ike20013/dendrite/syncapi"
 
-	"github.com/element-hq/dendrite/roomserver"
-	"github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/roomserver/storage"
-	"github.com/element-hq/dendrite/test"
-	"github.com/element-hq/dendrite/test/testrig"
+	"github.com/ike20013/dendrite/roomserver"
+	"github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/roomserver/storage"
+	"github.com/ike20013/dendrite/test"
+	"github.com/ike20013/dendrite/test/testrig"
 )
 
 var testIsBlacklistedOrBackingOff = func(s spec.ServerName) (*statistics.ServerStatistics, error) {
@@ -1017,7 +1017,7 @@ func TestUpgrade(t *testing.T) {
 			validateFunc: validate,
 		},
 		{
-			name:        "custom state is not taken to the new room", // https://github.com/element-hq/dendrite/issues/2912
+			name:        "custom state is not taken to the new room", // https://github.com/ike20013/dendrite/issues/2912
 			upgradeUser: charlie.ID,
 			roomFunc: func(rsAPI api.RoomserverInternalAPI) string {
 				r := test.NewRoom(t, alice, test.RoomVersion(gomatrixserverlib.RoomVersionV6))

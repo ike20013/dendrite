@@ -10,10 +10,10 @@ import (
 	"fmt"
 	"strings"
 
-	fsAPI "github.com/element-hq/dendrite/federationapi/api"
-	"github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/roomserver/internal/input"
-	"github.com/element-hq/dendrite/setup/config"
+	fsAPI "github.com/ike20013/dendrite/federationapi/api"
+	"github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/roomserver/internal/input"
+	"github.com/ike20013/dendrite/setup/config"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )

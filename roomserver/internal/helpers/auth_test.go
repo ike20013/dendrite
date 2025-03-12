@@ -9,7 +9,7 @@ package helpers
 import (
 	"testing"
 
-	"github.com/element-hq/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/roomserver/types"
 )
 
 func benchmarkStateEntryMapLookup(entries, lookups int64, b *testing.B) {

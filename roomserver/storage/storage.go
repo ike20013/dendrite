@@ -13,11 +13,11 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/element-hq/dendrite/external/caching"
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/roomserver/storage/postgres"
-	"github.com/element-hq/dendrite/roomserver/storage/sqlite3"
-	"github.com/element-hq/dendrite/setup/config"
+	"github.com/ike20013/dendrite/external/caching"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/roomserver/storage/postgres"
+	"github.com/ike20013/dendrite/roomserver/storage/sqlite3"
+	"github.com/ike20013/dendrite/setup/config"
 )
 
 // Open opens a database connection.

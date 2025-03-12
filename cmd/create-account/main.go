@@ -20,13 +20,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/element-hq/dendrite/external"
+	"github.com/ike20013/dendrite/external"
 	"github.com/tidwall/gjson"
 
 	"github.com/sirupsen/logrus"
 	"golang.org/x/term"
 
-	"github.com/element-hq/dendrite/setup"
+	"github.com/ike20013/dendrite/setup"
 )
 
 const usage = `Usage: %s

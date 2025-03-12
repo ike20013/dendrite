@@ -10,7 +10,7 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	"github.com/element-hq/dendrite/federationapi/storage"
+	"github.com/ike20013/dendrite/federationapi/storage"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )
 

@@ -14,10 +14,10 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/roomserver/storage/sqlite3/deltas"
-	"github.com/element-hq/dendrite/roomserver/storage/tables"
-	"github.com/element-hq/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/roomserver/storage/sqlite3/deltas"
+	"github.com/ike20013/dendrite/roomserver/storage/tables"
+	"github.com/ike20013/dendrite/roomserver/types"
 )
 
 // TODO: previous_reference_sha256 was NOT NULL before but it broke sytest because

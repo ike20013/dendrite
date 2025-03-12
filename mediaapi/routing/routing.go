@@ -11,12 +11,12 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/element-hq/dendrite/external/httputil"
-	"github.com/element-hq/dendrite/federationapi/rou
-	"github.com/element-hq/dendrite/mediaapi/storage"
-	"github.com/element-hq/dendrite/mediaapi/types"
-	"github.com/element-hq/dendrite/setup/config"
-	userapi "github.com/element-hq/dendrite/userapi/api"
+	"github.com/ike20013/dendrite/external/httputil"
+	"github.com/ike20013/dendrite/federationapi/rou
+	"github.com/ike20013/dendrite/mediaapi/storage"
+	"github.com/ike20013/dendrite/mediaapi/types"
+	"github.com/ike20013/dendrite/setup/config"
+	userapi "github.com/ike20013/dendrite/userapi/api"
 	"github.com/gorilla/mux"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/fclient"

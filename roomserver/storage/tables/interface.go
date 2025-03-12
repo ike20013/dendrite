@@ -6,12 +6,12 @@ import (
 	"database/sql"
 	"errors"
 
-	"github.com/element-hq/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/roomserver/api"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/tidwall/gjson"
 
-	"github.com/element-hq/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/roomserver/types"
 )
 
 var OptimisationNotSupportedError = errors.New("optimisation not supported")

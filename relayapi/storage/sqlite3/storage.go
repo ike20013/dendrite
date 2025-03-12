@@ -9,10 +9,10 @@ package sqlite3
 import (
 	"database/sql"
 
-	"github.com/element-hq/dendrite/external/caching"
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/relayapi/storage/shared"
-	"github.com/element-hq/dendrite/setup/config"
+	"github.com/ike20013/dendrite/external/caching"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/relayapi/storage/shared"
+	"github.com/ike20013/dendrite/setup/config"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )
 

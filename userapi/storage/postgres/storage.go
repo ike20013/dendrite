@@ -12,10 +12,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/userapi/storage/postgres/deltas"
-	"github.com/element-hq/dendrite/userapi/storage/shared"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/userapi/storage/postgres/deltas"
+	"github.com/ike20013/dendrite/userapi/storage/shared"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 
 	// Import the postgres database driver.

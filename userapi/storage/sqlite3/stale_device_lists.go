@@ -12,11 +12,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/element-hq/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/external/sqlutil"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 
-	"github.com/element-hq/dendrite/external"
-	"github.com/element-hq/dendrite/userapi/storage/tables"
+	"github.com/ike20013/dendrite/external"
+	"github.com/ike20013/dendrite/userapi/storage/tables"
 	"github.com/matrix-org/gomatrixserverlib"
 )
 

@@ -5,11 +5,11 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/mediaapi/storage"
-	"github.com/element-hq/dendrite/mediaapi/types"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/test"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/mediaapi/storage"
+	"github.com/ike20013/dendrite/mediaapi/types"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/test"
 )
 
 func mustCreateDatabase(t *testing.T, dbType test.DBType) (storage.Database, func()) {

@@ -10,7 +10,7 @@ import (
 	"net/http"
 	"time"
 
-	userapi "github.com/element-hq/dendrite/userapi/api"
+	userapi "github.com/ike20013/dendrite/userapi/api"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/matrix-org/util"
 )

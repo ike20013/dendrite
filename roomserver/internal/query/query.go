@@ -13,25 +13,25 @@ import (
 	"errors"
 	"fmt"
 
-	//"github.com/element-hq/dendrite/roomserver/external"
-	"github.com/element-hq/dendrite/setup/config"
+	//"github.com/ike20013/dendrite/roomserver/external"
+	"github.com/ike20013/dendrite/setup/config"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/matrix-org/util"
 	"github.com/sirupsen/logrus"
 
-	"github.com/element-hq/dendrite/roomserver/storage/tables"
-	"github.com/element-hq/dendrite/syncapi/synctypes"
+	"github.com/ike20013/dendrite/roomserver/storage/tables"
+	"github.com/ike20013/dendrite/syncapi/synctypes"
 
-	"github.com/element-hq/dendrite/clientapi/auth/authtypes"
-	"github.com/element-hq/dendrite/external/caching"
-	fsAPI "github.com/element-hq/dendrite/federation
-	"github.com/element-hq/dendrite/roomserver/acls"
-	"github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/roomserver/internal/helpers"
-	"github.com/element-hq/dendrite/roomserver/state"
-	"github.com/element-hq/dendrite/roomserver/storage"
-	"github.com/element-hq/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/clientapi/auth/authtypes"
+	"github.com/ike20013/dendrite/external/caching"
+	fsAPI "github.com/ike20013/dendrite/federation
+	"github.com/ike20013/dendrite/roomserver/acls"
+	"github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/roomserver/internal/helpers"
+	"github.com/ike20013/dendrite/roomserver/state"
+	"github.com/ike20013/dendrite/roomserver/storage"
+	"github.com/ike20013/dendrite/roomserver/types"
 )
 
 type Queryer struct {

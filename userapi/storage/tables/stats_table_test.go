@@ -11,14 +11,14 @@ import (
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/matrix-org/util"
 
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/test"
-	"github.com/element-hq/dendrite/userapi/api"
-	"github.com/element-hq/dendrite/userapi/storage/postgres"
-	"github.com/element-hq/dendrite/userapi/storage/sqlite3"
-	"github.com/element-hq/dendrite/userapi/storage/tables"
-	"github.com/element-hq/dendrite/userapi/types"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/test"
+	"github.com/ike20013/dendrite/userapi/api"
+	"github.com/ike20013/dendrite/userapi/storage/postgres"
+	"github.com/ike20013/dendrite/userapi/storage/sqlite3"
+	"github.com/ike20013/dendrite/userapi/storage/tables"
+	"github.com/ike20013/dendrite/userapi/types"
 )
 
 func mustMakeDBs(t *testing.T, dbType test.DBType) (

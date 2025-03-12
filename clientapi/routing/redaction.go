@@ -16,13 +16,13 @@ import (
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/matrix-org/util"
 
-	"github.com/element-hq/dendrite/clientapi/httputil"
-	"github.com/element-hq/dendrite/external/eventutil"
-	"github.com/element-hq/dendrite/external/transactions"
-	roomserverAPI "github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/roomserver/types"
-	"github.com/element-hq/dendrite/setup/config"
-	userapi "github.com/element-hq/dendrite/userapi/api"
+	"github.com/ike20013/dendrite/clientapi/httputil"
+	"github.com/ike20013/dendrite/external/eventutil"
+	"github.com/ike20013/dendrite/external/transactions"
+	roomserverAPI "github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/setup/config"
+	userapi "github.com/ike20013/dendrite/userapi/api"
 )
 
 type redactionContent struct {

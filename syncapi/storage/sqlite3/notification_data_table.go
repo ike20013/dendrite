@@ -11,11 +11,11 @@ import (
 	"database/sql"
 	"strings"
 
-	"github.com/element-hq/dendrite/external"
-	"github.com/element-hq/dendrite/external/eventutil"
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/syncapi/storage/tables"
-	"github.com/element-hq/dendrite/syncapi/types"
+	"github.com/ike20013/dendrite/external"
+	"github.com/ike20013/dendrite/external/eventutil"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/syncapi/storage/tables"
+	"github.com/ike20013/dendrite/syncapi/types"
 )
 
 func NewSqliteNotificationDataTable(db *sql.DB, streamID *StreamIDStatements) (tables.NotificationData, error) {

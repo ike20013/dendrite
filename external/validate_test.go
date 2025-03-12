@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/element-hq/dendrite/setup/config"
+	"github.com/ike20013/dendrite/setup/config"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/matrix-org/util"
 )

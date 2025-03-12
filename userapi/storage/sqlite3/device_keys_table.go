@@ -12,10 +12,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/element-hq/dendrite/external"
-	"github.com/element-hq/dendrite/external/sqlutil"
-	"github.com/element-hq/dendrite/userapi/api"
-	"github.com/element-hq/dendrite/userapi/storage/tables"
+	"github.com/ike20013/dendrite/external"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/userapi/api"
+	"github.com/ike20013/dendrite/userapi/storage/tables"
 )
 
 var deviceKeysSchema = `

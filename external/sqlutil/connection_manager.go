@@ -11,8 +11,8 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/setup/process"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/setup/process"
 )
 
 type Connections struct {

@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/element-hq/dendrite/external"
+	"github.com/ike20013/dendrite/external"
 )
 
 type httpClient struct {

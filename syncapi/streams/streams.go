@@ -3,13 +3,13 @@ package streams
 import (
 	"context"
 
-	"github.com/element-hq/dendrite/external/caching"
-	"github.com/element-hq/dendrite/external/sqlutil"
-	rsapi "github.com/element-hq/dendrite/roomserver/api"
-	"github.com/element-hq/dendrite/syncapi/notifier"
-	"github.com/element-hq/dendrite/syncapi/storage"
-	"github.com/element-hq/dendrite/syncapi/types"
-	userapi "github.com/element-hq/dendrite/userapi/api"
+	"github.com/ike20013/dendrite/external/caching"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	rsapi "github.com/ike20013/dendrite/roomserver/api"
+	"github.com/ike20013/dendrite/syncapi/notifier"
+	"github.com/ike20013/dendrite/syncapi/storage"
+	"github.com/ike20013/dendrite/syncapi/types"
+	userapi "github.com/ike20013/dendrite/userapi/api"
 )
 
 type Streams struct {

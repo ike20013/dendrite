@@ -3,8 +3,8 @@ package tables
 import (
 	"testing"
 
-	"github.com/element-hq/dendrite/roomserver/types"
-	"github.com/element-hq/dendrite/test"
+	"github.com/ike20013/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/test"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/stretchr/testify/assert"
 )

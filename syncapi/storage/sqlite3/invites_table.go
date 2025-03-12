@@ -12,11 +12,11 @@ import (
 	"database/sql"
 	"encoding/json"
 
-	"github.com/element-hq/dendrite/external"
-	"github.com/element-hq/dendrite/external/sqlutil"
-	rstypes "github.com/element-hq/dendrite/roomserver/types"
-	"github.com/element-hq/dendrite/syncapi/storage/tables"
-	"github.com/element-hq/dendrite/syncapi/types"
+	"github.com/ike20013/dendrite/external"
+	"github.com/ike20013/dendrite/external/sqlutil"
+	rstypes "github.com/ike20013/dendrite/roomserver/types"
+	"github.com/ike20013/dendrite/syncapi/storage/tables"
+	"github.com/ike20013/dendrite/syncapi/types"
 )
 
 const inviteEventsSchema = `

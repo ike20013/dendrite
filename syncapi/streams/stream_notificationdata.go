@@ -3,9 +3,9 @@ package streams
 import (
 	"context"
 
-	"github.com/element-hq/dendrite/external/eventutil"
-	"github.com/element-hq/dendrite/syncapi/storage"
-	"github.com/element-hq/dendrite/syncapi/types"
+	"github.com/ike20013/dendrite/external/eventutil"
+	"github.com/ike20013/dendrite/syncapi/storage"
+	"github.com/ike20013/dendrite/syncapi/types"
 )
 
 type NotificationDataStreamProvider struct {

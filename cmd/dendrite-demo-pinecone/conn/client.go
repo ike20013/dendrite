@@ -14,7 +14,7 @@ import (
 	"strings"
 
 	"github.com/coder/websocket"
-	"github.com/element-hq/dendrite/setup/config"
+	"github.com/ike20013/dendrite/setup/config"
 	"github.com/matrix-org/gomatrixserverlib/fclient"
 
 	pineconeRouter "github.com/matrix-org/pinecone/router"

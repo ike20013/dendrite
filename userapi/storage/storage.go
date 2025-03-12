@@ -14,12 +14,12 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/element-hq/dendrite/external/sqlutil"
+	"github.com/ike20013/dendrite/external/sqlutil"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 
-	"github.com/element-hq/dendrite/setup/config"
-	"github.com/element-hq/dendrite/userapi/storage/postgres"
-	"github.com/element-hq/dendrite/userapi/storage/sqlite3"
+	"github.com/ike20013/dendrite/setup/config"
+	"github.com/ike20013/dendrite/userapi/storage/postgres"
+	"github.com/ike20013/dendrite/userapi/storage/sqlite3"
 )
 
 // NewUserDatabase opens a new Postgres or Sqlite database (based on dataSourceName scheme)

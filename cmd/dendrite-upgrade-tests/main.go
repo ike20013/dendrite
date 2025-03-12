@@ -142,7 +142,7 @@ const dendriteUpgradeTestLabel = "dendrite_upgrade_test"
 
 // downloadArchive downloads an arbitrary github archive of the form:
 //
-//	https://github.com/element-hq/dendrite/archive/v0.3.11.tar.gz
+//	https://github.com/ike20013/dendrite/archive/v0.3.11.tar.gz
 //
 // and re-tarballs it without the top-level directory which contains branch information. It inserts
 // the contents of `dockerfile` as a root file `Dockerfile` in the re-tarballed directory such that

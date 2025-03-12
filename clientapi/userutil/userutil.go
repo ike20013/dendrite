@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/element-hq/dendrite/setup/config"
+	"github.com/ike20013/dendrite/setup/config"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )
