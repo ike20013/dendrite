@@ -12,11 +12,11 @@ package storage
 import (
 	"context"
 	"fmt"
+	"github.com/ike20013/dendrite/federationapi/storage/sqlite3"
 
 	"github.com/ike20013/dendrite/external/caching"
 	"github.com/ike20013/dendrite/external/sqlutil"
 	"github.com/ike20013/dendrite/federationapi/storage/postgres"
-	"github.com/element-hq/dendr
 	"github.com/ike20013/dendrite/setup/config"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )

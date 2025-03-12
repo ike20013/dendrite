@@ -25,7 +25,7 @@ import (
 
 	"github.com/ike20013/dendrite/clientapi/auth/authtypes"
 	"github.com/ike20013/dendrite/external/caching"
-	fsAPI "github.com/ike20013/dendrite/federation
+	fsAPI "github.com/ike20013/dendrite/federationapi/api"
 	"github.com/ike20013/dendrite/roomserver/acls"
 	"github.com/ike20013/dendrite/roomserver/api"
 	"github.com/ike20013/dendrite/roomserver/internal/helpers"

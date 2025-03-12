@@ -7,12 +7,12 @@
 package userapi
 
 import (
+	"github.com/ike20013/dendrite/federationapi/statistics"
 	"time"
 
 	"github.com/ike20013/dendrite/external/pushgateway"
 	"github.com/ike20013/dendrite/external/sqlutil"
 	fedsenderapi "github.com/ike20013/dendrite/federationapi/api"
-	"github.com/element-hq/dendr
 	"github.com/ike20013/dendrite/setup/config"
 	"github.com/ike20013/dendrite/setup/process"
 	"github.com/matrix-org/gomatrixserverlib/spec"

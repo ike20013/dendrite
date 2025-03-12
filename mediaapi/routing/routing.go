@@ -8,16 +8,16 @@ package routing
 
 import (
 	"encoding/json"
+	"github.com/ike20013/dendrite/federationapi/routing"
 	"net/http"
 	"strings"
 
+	"github.com/gorilla/mux"
 	"github.com/ike20013/dendrite/external/httputil"
-	"github.com/ike20013/dendrite/federationapi/rou
 	"github.com/ike20013/dendrite/mediaapi/storage"
 	"github.com/ike20013/dendrite/mediaapi/types"
 	"github.com/ike20013/dendrite/setup/config"
 	userapi "github.com/ike20013/dendrite/userapi/api"
-	"github.com/gorilla/mux"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/fclient"
 	"github.com/matrix-org/gomatrixserverlib/spec"

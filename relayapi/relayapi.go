@@ -10,7 +10,7 @@ import (
 	"github.com/ike20013/dendrite/external/caching"
 	"github.com/ike20013/dendrite/external/httputil"
 	"github.com/ike20013/dendrite/external/sqlutil"
-	"github.com/ike20013/dendrite/federationapi
+	"github.com/ike20013/dendrite/federationapi/producers"
 	"github.com/ike20013/dendrite/relayapi/api"
 	"github.com/ike20013/dendrite/relayapi/internal"
 	"github.com/ike20013/dendrite/relayapi/routing"

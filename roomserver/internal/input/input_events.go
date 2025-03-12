@@ -35,7 +35,7 @@ import (
 	"github.com/ike20013/dendrite/external/eventutil"
 	"github.com/ike20013/dendrite/external/hooks"
 	"github.com/ike20013/dendrite/external/sqlutil"
-	fedapi "github.com/ike20013/dendrite/federati
+	fedapi "github.com/ike20013/dendrite/federationapi/api"
 	"github.com/ike20013/dendrite/roomserver/api"
 	"github.com/ike20013/dendrite/roomserver/state"
 	"github.com/ike20013/dendrite/roomserver/types"

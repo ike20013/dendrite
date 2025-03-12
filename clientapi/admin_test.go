@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/ike20013/dendrite/federationapi"
 	"net/http"
 	"net/http/httptest"
 	"reflect"
@@ -14,7 +15,6 @@ import (
 	"github.com/ike20013/dendrite/external/caching"
 	"github.com/ike20013/dendrite/external/httputil"
 	"github.com/ike20013/dendrite/external/sqlutil"
-	"github.com/ike20013/dendrite/federationa
 	"github.com/ike20013/dendrite/roomserver"
 	"github.com/ike20013/dendrite/roomserver/api"
 	basepkg "github.com/ike20013/dendrite/setup/base"
