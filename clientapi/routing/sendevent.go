@@ -16,8 +16,8 @@ import (
 	"time"
 
 	"github.com/element-hq/dendrite/clientapi/httputil"
-	"github.com/element-hq/dendrite/internal/eventutil"
-	"github.com/element-hq/dendrite/internal/transactions"
+	"github.com/element-hq/dendrite/external/eventutil"
+	"github.com/element-hq/dendrite/external/transactions"
 	"github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/roomserver/types"
 	"github.com/element-hq/dendrite/setup/config"
@@ -103,7 +103,7 @@ func SendEvent(
 			util.GetLogger(req.Context()).WithError(innerErr).Error("synctypes.FromClientStateKey failed")
 			return util.JSONResponse{
 				Code: http.StatusInternalServerError,
-				JSON: spec.Unknown("internal server error"),
+				JSON: spec.Unknown("external server error"),
 			}
 		}
 		stateKey = newStateKey
@@ -341,7 +341,7 @@ func generateSendEvent(
 	if err != nil {
 		return nil, &util.JSONResponse{
 			Code: http.StatusInternalServerError,
-			JSON: spec.NotFound("internal server error"),
+			JSON: spec.NotFound("external server error"),
 		}
 	} else if senderID == nil {
 		// TODO: is it always the case that lack of a sender ID means they're not joined?

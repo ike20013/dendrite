@@ -31,11 +31,11 @@ import (
 
 	userAPI "github.com/element-hq/dendrite/userapi/api"
 
-	fedapi "github.com/element-hq/dendrite/federationapi/api"
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/eventutil"
-	"github.com/element-hq/dendrite/internal/hooks"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/eventutil"
+	"github.com/element-hq/dendrite/external/hooks"
+	"github.com/element-hq/dendrite/external/sqlutil"
+	fedapi "github.com/element-hq/dendrite/federati
 	"github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/roomserver/state"
 	"github.com/element-hq/dendrite/roomserver/types"
@@ -82,7 +82,7 @@ func (r *Inputer) processRoomEvent(
 	default:
 	}
 
-	trace, ctx := internal.StartRegion(ctx, "processRoomEvent")
+	trace, ctx := external.StartRegion(ctx, "processRoomEvent")
 	trace.SetTag("room_id", input.Event.RoomID().String())
 	trace.SetTag("event_id", input.Event.EventID())
 	defer trace.EndRegion()
@@ -249,7 +249,7 @@ func (r *Inputer) processRoomEvent(
 				roomInfo:    roomInfo,
 				federation:  r.FSAPI,
 				keys:        r.KeyRing,
-				roomsMu:     internal.NewMutexByRoom(),
+				roomsMu:     external.NewMutexByRoom(),
 				servers:     serverRes.ServerNames,
 				hadEvents:   map[string]bool{},
 				haveEvents:  map[string]gomatrixserverlib.PDU{},
@@ -687,7 +687,7 @@ func (r *Inputer) fetchAuthEvents(
 	known map[string]*types.Event,
 	servers []spec.ServerName,
 ) error {
-	trace, ctx := internal.StartRegion(ctx, "fetchAuthEvents")
+	trace, ctx := external.StartRegion(ctx, "fetchAuthEvents")
 	defer trace.EndRegion()
 
 	unknown := map[string]struct{}{}
@@ -845,7 +845,7 @@ func (r *Inputer) calculateAndSetState(
 	event gomatrixserverlib.PDU,
 	isRejected bool,
 ) error {
-	trace, ctx := internal.StartRegion(ctx, "calculateAndSetState")
+	trace, ctx := external.StartRegion(ctx, "calculateAndSetState")
 	defer trace.EndRegion()
 
 	var succeeded bool

@@ -12,8 +12,8 @@ import (
 	"database/sql"
 	"strings"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/roomserver/storage/tables"
 	"github.com/element-hq/dendrite/roomserver/types"
 )
@@ -85,7 +85,7 @@ func (s *eventJSONStatements) BulkSelectEventJSON(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "bulkSelectEventJSON: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "bulkSelectEventJSON: rows.close() failed")
 
 	// We know that we will only get as many results as event NIDs
 	// because of the unique constraint on event NIDs.

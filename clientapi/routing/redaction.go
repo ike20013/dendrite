@@ -17,8 +17,8 @@ import (
 	"github.com/matrix-org/util"
 
 	"github.com/element-hq/dendrite/clientapi/httputil"
-	"github.com/element-hq/dendrite/internal/eventutil"
-	"github.com/element-hq/dendrite/internal/transactions"
+	"github.com/element-hq/dendrite/external/eventutil"
+	"github.com/element-hq/dendrite/external/transactions"
 	roomserverAPI "github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/roomserver/types"
 	"github.com/element-hq/dendrite/setup/config"
@@ -73,7 +73,7 @@ func SendRedaction(
 		util.GetLogger(req.Context()).WithField("userID", *deviceUserID).WithField("roomID", roomID).Error("missing sender ID for user, despite having membership")
 		return util.JSONResponse{
 			Code: http.StatusInternalServerError,
-			JSON: spec.Unknown("internal server error"),
+			JSON: spec.Unknown("external server error"),
 		}
 	}
 

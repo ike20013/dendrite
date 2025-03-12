@@ -82,7 +82,7 @@ func PeekRoomByIDOrAlias(
 
 	return util.JSONResponse{
 		Code: http.StatusOK,
-		// TODO: Put the response struct somewhere internal.
+		// TODO: Put the response struct somewhere external.
 		JSON: struct {
 			RoomID string `json:"room_id"`
 		}{roomID},

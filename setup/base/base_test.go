@@ -12,8 +12,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/httputil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/httputil"
 	basepkg "github.com/element-hq/dendrite/setup/base"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/element-hq/dendrite/setup/process"
@@ -28,7 +28,7 @@ func TestLandingPage_Tcp(t *testing.T) {
 	tmpl := template.Must(template.ParseFS(staticContent, "static/*.gotmpl"))
 	expectedRes := &bytes.Buffer{}
 	err := tmpl.ExecuteTemplate(expectedRes, "index.gotmpl", map[string]string{
-		"Version": internal.VersionString(),
+		"Version": external.VersionString(),
 	})
 	assert.NoError(t, err)
 
@@ -70,7 +70,7 @@ func TestLandingPage_UnixSocket(t *testing.T) {
 	tmpl := template.Must(template.ParseFS(staticContent, "static/*.gotmpl"))
 	expectedRes := &bytes.Buffer{}
 	err := tmpl.ExecuteTemplate(expectedRes, "index.gotmpl", map[string]string{
-		"Version": internal.VersionString(),
+		"Version": external.VersionString(),
 	})
 	assert.NoError(t, err)
 

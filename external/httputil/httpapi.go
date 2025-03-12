@@ -24,7 +24,7 @@ import (
 	"github.com/sirupsen/logrus"
 
 	"github.com/element-hq/dendrite/clientapi/auth"
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
 	userapi "github.com/element-hq/dendrite/userapi/api"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )
@@ -188,7 +188,7 @@ func MakeExternalAPI(metricsName string, f func(*http.Request) util.JSONResponse
 			}
 		}
 
-		trace, ctx := internal.StartTask(req.Context(), metricsName)
+		trace, ctx := external.StartTask(req.Context(), metricsName)
 		defer trace.EndTask()
 		req = req.WithContext(ctx)
 		h.ServeHTTP(nextWriter, req)
@@ -208,7 +208,7 @@ func MakeHTTPAPI(metricsName string, userAPI userapi.QueryAcccessTokenAPI, enabl
 			return
 		}
 
-		trace, ctx := internal.StartTask(req.Context(), metricsName)
+		trace, ctx := external.StartTask(req.Context(), metricsName)
 		defer trace.EndTask()
 		req = req.WithContext(ctx)
 

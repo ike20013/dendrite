@@ -11,8 +11,8 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/roomserver/storage/tables"
 	"github.com/element-hq/dendrite/roomserver/types"
@@ -158,7 +158,7 @@ func (r *reportedEventsStatements) SelectReportedEvents(
 	if err != nil {
 		return nil, 0, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "SelectReportedEvents: failed to close rows")
+	defer external.CloseAndLogIfError(ctx, rows, "SelectReportedEvents: failed to close rows")
 
 	var result []api.QueryAdminEventReportsResponse
 	var row api.QueryAdminEventReportsResponse

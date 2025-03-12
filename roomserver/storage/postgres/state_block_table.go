@@ -12,8 +12,8 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/roomserver/storage/tables"
 	"github.com/element-hq/dendrite/roomserver/types"
 	"github.com/lib/pq"
@@ -23,7 +23,7 @@ import (
 const stateDataSchema = `
 -- The state data map.
 -- Designed to give enough information to run the state resolution algorithm
--- without hitting the database in the internal case.
+-- without hitting the database in the external case.
 -- TODO: Is it worth replacing the unique btree index with a covering index so
 -- that postgres could lookup the state using an index-only scan?
 -- The type and state_key are included in the index to make it easier to
@@ -100,7 +100,7 @@ func (s *stateBlockStatements) BulkSelectStateBlockEntries(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "bulkSelectStateBlockEntries: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "bulkSelectStateBlockEntries: rows.close() failed")
 
 	results := make([][]types.EventNID, len(stateBlockNIDs))
 	i := 0

@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only OR LicenseRef-Element-Commercial
 // Please see LICENSE files in the repository root for full details.
 
-// Package query handles requests from other internal dendrite components when
+// Package query handles requests from other external dendrite components when
 // they interact with the AppServiceQueryAPI.
 package query
 
@@ -19,7 +19,7 @@ import (
 	log "github.com/sirupsen/logrus"
 
 	"github.com/element-hq/dendrite/appservice/api"
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
 	"github.com/element-hq/dendrite/setup/config"
 )
 
@@ -37,7 +37,7 @@ func (a *AppServiceQueryAPI) RoomAliasExists(
 	request *api.RoomAliasExistsRequest,
 	response *api.RoomAliasExistsResponse,
 ) error {
-	trace, ctx := internal.StartRegion(ctx, "ApplicationServiceRoomAlias")
+	trace, ctx := external.StartRegion(ctx, "ApplicationServiceRoomAlias")
 	defer trace.EndRegion()
 
 	// Determine which application service should handle this request
@@ -114,7 +114,7 @@ func (a *AppServiceQueryAPI) UserIDExists(
 	request *api.UserIDExistsRequest,
 	response *api.UserIDExistsResponse,
 ) error {
-	trace, ctx := internal.StartRegion(ctx, "ApplicationServiceUserID")
+	trace, ctx := external.StartRegion(ctx, "ApplicationServiceUserID")
 	defer trace.EndRegion()
 
 	// Determine which application service should handle this request

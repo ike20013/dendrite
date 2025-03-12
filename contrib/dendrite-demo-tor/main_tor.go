@@ -18,8 +18,8 @@ import (
 	"text/template"
 
 	"github.com/cretz/bine/tor"
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/httputil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/httputil"
 	"github.com/element-hq/dendrite/setup/process"
 	"github.com/eyedeekay/onramp"
 	sentryhttp "github.com/getsentry/sentry-go/http"
@@ -136,7 +136,7 @@ func SetupAndServeHTTPS(
 	tmpl := template.Must(template.ParseFS(staticContent, "static/*.gotmpl"))
 	landingPage := &bytes.Buffer{}
 	if err := tmpl.ExecuteTemplate(landingPage, "index.gotmpl", map[string]string{
-		"Version": internal.VersionString(),
+		"Version": external.VersionString(),
 	}); err != nil {
 		logrus.WithError(err).Fatal("failed to execute landing page template")
 	}

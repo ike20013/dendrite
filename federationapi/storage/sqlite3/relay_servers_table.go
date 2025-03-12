@@ -11,8 +11,8 @@ import (
 	"database/sql"
 	"strings"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )
 
@@ -91,7 +91,7 @@ func (s *relayServersStatements) SelectRelayServers(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "SelectRelayServers: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "SelectRelayServers: rows.close() failed")
 
 	var result []spec.ServerName
 	for rows.Next() {

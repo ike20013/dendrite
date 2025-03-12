@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"testing"
 
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/element-hq/dendrite/syncapi/storage/postgres"
 	"github.com/element-hq/dendrite/syncapi/storage/sqlite3"

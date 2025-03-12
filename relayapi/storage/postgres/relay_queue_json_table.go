@@ -10,8 +10,8 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/lib/pq"
 )
 
@@ -92,7 +92,7 @@ func (s *relayQueueJSONStatements) SelectQueueJSON(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectJSON: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectJSON: rows.close() failed")
 	for rows.Next() {
 		var nid int64
 		var blob []byte

@@ -9,10 +9,10 @@ package userapi
 import (
 	"time"
 
+	"github.com/element-hq/dendrite/external/pushgateway"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	fedsenderapi "github.com/element-hq/dendrite/federationapi/api"
-	"github.com/element-hq/dendrite/federationapi/statistics"
-	"github.com/element-hq/dendrite/internal/pushgateway"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendr
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/element-hq/dendrite/setup/process"
 	"github.com/matrix-org/gomatrixserverlib/spec"
@@ -28,7 +28,7 @@ import (
 	"github.com/element-hq/dendrite/userapi/util"
 )
 
-// NewInternalAPI returns a concrete implementation of the internal API. Callers
+// NewInternalAPI returns a concrete implementation of the external API. Callers
 // can call functions directly on the returned API or via an HTTP interface using AddInternalRoutes.
 //
 // Creating a new instance of the user API requires a roomserver API with a federation API set

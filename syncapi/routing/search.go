@@ -21,8 +21,8 @@ import (
 	"github.com/tidwall/gjson"
 
 	"github.com/element-hq/dendrite/clientapi/httputil"
-	"github.com/element-hq/dendrite/internal/fulltext"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/fulltext"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	roomserverAPI "github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/roomserver/types"
 	"github.com/element-hq/dendrite/syncapi/storage"

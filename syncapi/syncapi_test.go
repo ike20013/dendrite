@@ -11,9 +11,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/element-hq/dendrite/internal/caching"
-	"github.com/element-hq/dendrite/internal/httputil"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/caching"
+	"github.com/element-hq/dendrite/external/httputil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/gorilla/mux"
 	"github.com/matrix-org/gomatrixserverlib"
@@ -606,7 +606,7 @@ func testHistoryVisibility(t *testing.T, dbType test.DBType) {
 		jsctx, _ := natsInstance.Prepare(processCtx, &cfg.Global.JetStream)
 		defer jetstream.DeleteAllStreams(jsctx, &cfg.Global.JetStream)
 
-		// Use the actual internal roomserver API
+		// Use the actual external roomserver API
 		rsAPI := roomserver.NewInternalAPI(processCtx, cfg, cm, &natsInstance, caches, caching.DisableMetrics)
 		rsAPI.SetFederationAPI(nil, nil)
 		AddPublicRoutes(processCtx, routers, cfg, cm, &natsInstance, &syncUserAPI{accounts: []userapi.Device{aliceDev, bobDev}}, rsAPI, caches, caching.DisableMetrics)

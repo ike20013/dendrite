@@ -13,8 +13,8 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/userapi/api"
 	"github.com/element-hq/dendrite/userapi/storage/tables"
 	"github.com/matrix-org/gomatrixserverlib/spec"
@@ -106,7 +106,7 @@ func (s *pushersStatements) SelectPushers(
 	if err != nil {
 		return pushers, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "SelectPushers: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "SelectPushers: rows.close() failed")
 
 	for rows.Next() {
 		var pusher api.Pusher

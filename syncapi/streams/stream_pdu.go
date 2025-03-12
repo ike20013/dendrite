@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/element-hq/dendrite/internal/caching"
+	"github.com/element-hq/dendrite/external/caching"
 	roomserverAPI "github.com/element-hq/dendrite/roomserver/api"
 	rstypes "github.com/element-hq/dendrite/roomserver/types"
 	"github.com/element-hq/dendrite/syncapi/internal"

@@ -13,8 +13,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/roomserver/storage/tables"
 	"github.com/element-hq/dendrite/roomserver/types"
 )
@@ -120,7 +120,7 @@ func (s *eventTypeStatements) BulkSelectEventTypeNID(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, selectPrep, "selectPrep.close() failed")
+	defer external.CloseAndLogIfError(ctx, selectPrep, "selectPrep.close() failed")
 	stmt := sqlutil.TxStmt(txn, selectPrep)
 	///////////////
 
@@ -128,7 +128,7 @@ func (s *eventTypeStatements) BulkSelectEventTypeNID(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "bulkSelectEventTypeNID: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "bulkSelectEventTypeNID: rows.close() failed")
 
 	result := make(map[string]types.EventTypeNID, len(eventTypes))
 	var eventType string

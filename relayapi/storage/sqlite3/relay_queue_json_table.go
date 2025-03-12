@@ -12,8 +12,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 )
 
 const relayQueueJSONSchema = `
@@ -116,7 +116,7 @@ func (s *relayQueueJSONStatements) SelectQueueJSON(
 	if err != nil {
 		return nil, fmt.Errorf("s.selectQueueJSON stmt.QueryContext: %w", err)
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectQueueJSON: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectQueueJSON: rows.close() failed")
 	for rows.Next() {
 		var nid int64
 		var blob []byte

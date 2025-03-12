@@ -18,9 +18,9 @@ import (
 
 	"github.com/element-hq/dendrite/cmd/dendrite-demo-pinecone/monolith"
 	"github.com/element-hq/dendrite/cmd/dendrite-demo-yggdrasil/signing"
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/httputil"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/httputil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/setup"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/element-hq/dendrite/setup/process"
@@ -42,7 +42,7 @@ var (
 
 func main() {
 	flag.Parse()
-	internal.SetupPprof()
+	external.SetupPprof()
 
 	var pk ed25519.PublicKey
 	var sk ed25519.PrivateKey

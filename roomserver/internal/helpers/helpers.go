@@ -20,7 +20,7 @@ import (
 	"github.com/element-hq/dendrite/roomserver/types"
 )
 
-// TODO: temporary package which has helper functions used by both internal/perform packages.
+// TODO: temporary package which has helper functions used by both external/perform packages.
 // Move these to a more sensible place.
 
 func UpdateToInviteMembership(

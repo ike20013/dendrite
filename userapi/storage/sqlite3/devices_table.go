@@ -12,8 +12,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/userapi/api"
 	"github.com/element-hq/dendrite/userapi/storage/sqlite3/deltas"
 	"github.com/element-hq/dendrite/userapi/storage/tables"
@@ -202,7 +202,7 @@ func (s *devicesStatements) DeleteDevices(
 	if err != nil {
 		return err
 	}
-	defer internal.CloseAndLogIfError(ctx, prep, "DeleteDevices.StmtClose() failed")
+	defer external.CloseAndLogIfError(ctx, prep, "DeleteDevices.StmtClose() failed")
 	stmt := sqlutil.TxStmt(txn, prep)
 	params := make([]interface{}, len(devices)+2)
 	params[0] = localpart
@@ -288,7 +288,7 @@ func (s *devicesStatements) SelectDevicesByLocalpart(
 	if err != nil {
 		return devices, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "SelectDevicesByLocalpart: failed to close rows")
+	defer external.CloseAndLogIfError(ctx, rows, "SelectDevicesByLocalpart: failed to close rows")
 
 	var dev api.Device
 	var lastseents sql.NullInt64
@@ -332,7 +332,7 @@ func (s *devicesStatements) SelectDevicesByID(ctx context.Context, deviceIDs []s
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectDevicesByID: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectDevicesByID: rows.close() failed")
 	var devices []api.Device
 	var dev api.Device
 	var localpart string

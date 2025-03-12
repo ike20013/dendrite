@@ -20,7 +20,7 @@ import (
 )
 
 // From within the Element Web directory:
-// go run github.com/mjibson/esc -o /path/to/dendrite/internal/embed/fs_elementweb.go -private -pkg embed .
+// go run github.com/mjibson/esc -o /path/to/dendrite/external/embed/fs_elementweb.go -private -pkg embed .
 
 var cssFile = regexp.MustCompile("\\.css$")
 var jsFile = regexp.MustCompile("\\.js$")

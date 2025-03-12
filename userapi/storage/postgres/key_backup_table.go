@@ -11,8 +11,8 @@ import (
 	"database/sql"
 	"encoding/json"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/userapi/api"
 	"github.com/element-hq/dendrite/userapi/storage/tables"
 )
@@ -138,7 +138,7 @@ func (s *keyBackupStatements) SelectKeysByRoomIDAndSessionID(
 
 func unpackKeys(ctx context.Context, rows *sql.Rows) (map[string]map[string]api.KeyBackupSession, error) {
 	result := make(map[string]map[string]api.KeyBackupSession)
-	defer internal.CloseAndLogIfError(ctx, rows, "selectKeysStmt.Close failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectKeysStmt.Close failed")
 	for rows.Next() {
 		var key api.InternalKeyBackupSession
 		// room_id, session_id, first_message_index, forwarded_count, is_verified, session_data

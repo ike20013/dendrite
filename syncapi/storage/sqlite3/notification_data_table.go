@@ -11,9 +11,9 @@ import (
 	"database/sql"
 	"strings"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/eventutil"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/eventutil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/syncapi/storage/tables"
 	"github.com/element-hq/dendrite/syncapi/types"
 )
@@ -92,12 +92,12 @@ func (r *notificationDataStatements) SelectUserUnreadCountsForRooms(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, prep, "SelectUserUnreadCountsForRooms: prep.close() failed")
+	defer external.CloseAndLogIfError(ctx, prep, "SelectUserUnreadCountsForRooms: prep.close() failed")
 	rows, err := sqlutil.TxStmt(txn, prep).QueryContext(ctx, params...)
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "SelectUserUnreadCountsForRooms: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "SelectUserUnreadCountsForRooms: rows.close() failed")
 
 	roomCounts := map[string]*eventutil.NotificationData{}
 	var roomID string

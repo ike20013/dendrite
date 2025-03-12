@@ -16,8 +16,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/roomserver/storage/sqlite3/deltas"
 	"github.com/element-hq/dendrite/roomserver/storage/tables"
 	"github.com/element-hq/dendrite/roomserver/types"
@@ -239,7 +239,7 @@ func (s *eventStatements) BulkSelectSnapshotsFromEventIDs(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, stmt, "BulkSelectSnapshotsFromEventIDs: stmt.close() failed")
+	defer external.CloseAndLogIfError(ctx, stmt, "BulkSelectSnapshotsFromEventIDs: stmt.close() failed")
 
 	params := make([]interface{}, len(eventIDs))
 	for i := range eventIDs {
@@ -250,7 +250,7 @@ func (s *eventStatements) BulkSelectSnapshotsFromEventIDs(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "BulkSelectSnapshotsFromEventIDs: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "BulkSelectSnapshotsFromEventIDs: rows.close() failed")
 
 	var eventID string
 	var stateNID types.StateSnapshotNID
@@ -296,7 +296,7 @@ func (s *eventStatements) BulkSelectStateEventByID(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "bulkSelectStateEventByID: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "bulkSelectStateEventByID: rows.close() failed")
 	// We know that we will only get as many results as event IDs
 	// because of the unique constraint on event IDs.
 	// So we can allocate an array of the correct size now.
@@ -322,7 +322,7 @@ func (s *eventStatements) BulkSelectStateEventByID(
 		// We don't know which ones were missing because we don't return the string IDs in the query.
 		// However it should be possible debug this by replaying queries or entries from the input kafka logs.
 		// If this turns out to be impossible and we do need the debug information here, it would be better
-		// to do it as a separate query rather than slowing down/complicating the internal case.
+		// to do it as a separate query rather than slowing down/complicating the external case.
 		return nil, types.MissingEventError(
 			fmt.Sprintf("storage: state event IDs missing from the database (%d != %d)", i, len(eventIDs)),
 		)
@@ -367,7 +367,7 @@ func (s *eventStatements) BulkSelectStateEventByNID(
 	if err != nil {
 		return nil, fmt.Errorf("selectStmt.QueryContext: %w", err)
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "bulkSelectStateEventByID: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "bulkSelectStateEventByID: rows.close() failed")
 	// We know that we will only get as many results as event IDs
 	// because of the unique constraint on event IDs.
 	// So we can allocate an array of the correct size now.
@@ -410,7 +410,7 @@ func (s *eventStatements) BulkSelectStateAtEventByID(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "bulkSelectStateAtEventByID: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "bulkSelectStateAtEventByID: rows.close() failed")
 	results := make([]types.StateAtEvent, len(eventIDs))
 	i := 0
 	for ; rows.Next(); i++ {
@@ -494,7 +494,7 @@ func (s *eventStatements) BulkSelectStateAtEventAndReference(
 	if err != nil {
 		return nil, fmt.Errorf("sqlutil.TxStmt.QueryContext: %w", err)
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "bulkSelectStateAtEventAndReference: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "bulkSelectStateAtEventAndReference: rows.close() failed")
 	results := make([]types.StateAtEventAndReference, len(eventNIDs))
 	i := 0
 	var (
@@ -546,7 +546,7 @@ func (s *eventStatements) BulkSelectEventID(ctx context.Context, txn *sql.Tx, ev
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "bulkSelectEventID: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "bulkSelectEventID: rows.close() failed")
 	results := make(map[types.EventNID]string, len(eventNIDs))
 	i := 0
 	var eventNID int64
@@ -604,7 +604,7 @@ func (s *eventStatements) bulkSelectEventNID(ctx context.Context, txn *sql.Tx, e
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "bulkSelectEventNID: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "bulkSelectEventNID: rows.close() failed")
 	results := make(map[string]types.EventMetadata, len(eventIDs))
 	var eventID string
 	var eventNID int64
@@ -632,7 +632,7 @@ func (s *eventStatements) SelectMaxEventDepth(ctx context.Context, txn *sql.Tx, 
 	if err != nil {
 		return 0, err
 	}
-	defer internal.CloseAndLogIfError(ctx, sqlPrep, "sqlPrep.close() failed")
+	defer external.CloseAndLogIfError(ctx, sqlPrep, "sqlPrep.close() failed")
 	err = sqlutil.TxStmt(txn, sqlPrep).QueryRowContext(ctx, iEventIDs...).Scan(&result)
 	if err != nil {
 		return 0, fmt.Errorf("sqlutil.TxStmt.QueryRowContext: %w", err)
@@ -648,7 +648,7 @@ func (s *eventStatements) SelectRoomNIDsForEventNIDs(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, sqlPrep, "sqlPrep.close() failed")
+	defer external.CloseAndLogIfError(ctx, sqlPrep, "sqlPrep.close() failed")
 	sqlStmt := sqlutil.TxStmt(txn, sqlPrep)
 	iEventNIDs := make([]interface{}, len(eventNIDs))
 	for i, v := range eventNIDs {
@@ -658,7 +658,7 @@ func (s *eventStatements) SelectRoomNIDsForEventNIDs(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectRoomNIDsForEventNIDsStmt: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectRoomNIDsForEventNIDsStmt: rows.close() failed")
 	result := make(map[types.EventNID]types.RoomNID)
 	var eventNID types.EventNID
 	var roomNID types.RoomNID
@@ -692,7 +692,7 @@ func (s *eventStatements) SelectRoomsWithEventTypeNID(
 ) ([]types.RoomNID, error) {
 	stmt := sqlutil.TxStmt(txn, s.selectRoomsWithEventTypeNIDStmt)
 	rows, err := stmt.QueryContext(ctx, eventTypeNID)
-	defer internal.CloseAndLogIfError(ctx, rows, "SelectRoomsWithEventTypeNID: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "SelectRoomsWithEventTypeNID: rows.close() failed")
 	if err != nil {
 		return nil, err
 	}

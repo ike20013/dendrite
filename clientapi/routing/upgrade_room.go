@@ -12,7 +12,7 @@ import (
 
 	appserviceAPI "github.com/element-hq/dendrite/appservice/api"
 	"github.com/element-hq/dendrite/clientapi/httputil"
-	"github.com/element-hq/dendrite/internal/eventutil"
+	"github.com/element-hq/dendrite/external/eventutil"
 	roomserverAPI "github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/roomserver/version"
 	"github.com/element-hq/dendrite/setup/config"

@@ -11,8 +11,8 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/syncapi/storage/tables"
 	"github.com/element-hq/dendrite/syncapi/types"
 )
@@ -142,7 +142,7 @@ func (s *peekStatements) SelectPeeksInRange(
 	if err != nil {
 		return
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "SelectPeeksInRange: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "SelectPeeksInRange: rows.close() failed")
 
 	for rows.Next() {
 		peek := types.Peek{}
@@ -164,7 +164,7 @@ func (s *peekStatements) SelectPeekingDevices(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "SelectPeekingDevices: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "SelectPeekingDevices: rows.close() failed")
 
 	result := make(map[string][]types.PeekingDevice)
 	for rows.Next() {

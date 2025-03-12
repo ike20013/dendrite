@@ -14,10 +14,10 @@ import (
 	"sync"
 	"time"
 
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/httputil"
 	fedInternal "github.com/element-hq/dendrite/federationapi/internal"
 	"github.com/element-hq/dendrite/federationapi/producers"
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/httputil"
 	"github.com/element-hq/dendrite/roomserver/api"
 	roomserverAPI "github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/setup/config"
@@ -64,7 +64,7 @@ func Setup(
 
 	if enableMetrics {
 		prometheus.MustRegister(
-			internal.PDUCountTotal, internal.EDUCountTotal,
+			external.PDUCountTotal, external.EDUCountTotal,
 		)
 	}
 
@@ -126,7 +126,7 @@ func Setup(
 	v2keysmux.Handle("/query", notaryKeys).Methods(http.MethodPost)
 	v2keysmux.Handle("/query/{serverName}/{keyID}", notaryKeys).Methods(http.MethodGet)
 
-	mu := internal.NewMutexByRoom()
+	mu := external.NewMutexByRoom()
 	v1fedmux.Handle("/send/{txnID}", MakeFedAPI(
 		"federation_send", cfg.Matrix.ServerName, cfg.Matrix.IsLocalServerName, keys, wakeup,
 		func(httpReq *http.Request, request *fclient.FederationRequest, vars map[string]string) util.JSONResponse {

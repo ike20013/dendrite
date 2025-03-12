@@ -6,8 +6,8 @@ import (
 	"time"
 
 	"github.com/element-hq/dendrite/clientapi/api"
-	internal "github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	internal "github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/userapi/storage/tables"
 	"golang.org/x/exp/constraints"
 )

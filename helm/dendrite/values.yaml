@@ -169,7 +169,7 @@ dendrite_config:
     jetstream:
       # -- Persistent directory to store JetStream streams in.
       storage_path: "/data/jetstream"
-      # -- NATS JetStream server addresses if not using internal NATS.
+      # -- NATS JetStream server addresses if not using external NATS.
       addresses: []
       # -- The prefix for JetStream streams
       topic_prefix: "Dendrite"

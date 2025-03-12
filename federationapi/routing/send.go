@@ -17,8 +17,8 @@ import (
 	"github.com/matrix-org/gomatrixserverlib/fclient"
 	"github.com/matrix-org/util"
 
+	"github.com/element-hq/dendrite/external"
 	"github.com/element-hq/dendrite/federationapi/producers"
-	"github.com/element-hq/dendrite/internal"
 	"github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/setup/config"
 	userAPI "github.com/element-hq/dendrite/userapi/api"
@@ -54,7 +54,7 @@ func Send(
 	keyAPI userAPI.FederationUserAPI,
 	keys gomatrixserverlib.JSONVerifier,
 	federation fclient.FederationClient,
-	mu *internal.MutexByRoom,
+	mu *external.MutexByRoom,
 	producer *producers.SyncAPIProducer,
 ) util.JSONResponse {
 	// First we should check if this origin has already submitted this
@@ -108,7 +108,7 @@ func Send(
 		}
 	}
 
-	t := internal.NewTxnReq(
+	t := external.NewTxnReq(
 		rsAPI,
 		keyAPI,
 		cfg.Matrix.ServerName,

@@ -3,8 +3,8 @@ package streams
 import (
 	"context"
 
-	"github.com/element-hq/dendrite/internal/caching"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/caching"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	rsapi "github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/syncapi/notifier"
 	"github.com/element-hq/dendrite/syncapi/storage"

@@ -15,7 +15,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
 	"github.com/element-hq/dendrite/roomserver/api"
 	rstypes "github.com/element-hq/dendrite/roomserver/types"
 	"github.com/element-hq/dendrite/syncapi/storage/sqlite3/deltas"
@@ -24,7 +24,7 @@ import (
 	"github.com/element-hq/dendrite/syncapi/types"
 	"github.com/matrix-org/gomatrixserverlib"
 
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 )
 
 const outputRoomEventsSchema = `
@@ -205,13 +205,13 @@ func (s *outputRoomEventsStatements) SelectStateInRange(
 	if err != nil {
 		return nil, nil, fmt.Errorf("s.prepareWithFilters: %w", err)
 	}
-	defer internal.CloseAndLogIfError(ctx, stmt, "selectStateInRange: stmt.close() failed")
+	defer external.CloseAndLogIfError(ctx, stmt, "selectStateInRange: stmt.close() failed")
 
 	rows, err := stmt.QueryContext(ctx, params...)
 	if err != nil {
 		return nil, nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectStateInRange: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectStateInRange: rows.close() failed")
 	// Fetch all the state change events for all rooms between the two positions then loop each event and:
 	//  - Keep a cache of the event by ID (99% of state change events are for the event itself)
 	//  - For each room ID, build up an array of event IDs which represents cumulative adds/removes
@@ -277,7 +277,7 @@ func (s *outputRoomEventsStatements) SelectMaxEventID(
 ) (id int64, err error) {
 	var nullableID sql.NullInt64
 	stmt := sqlutil.TxStmt(txn, s.selectMaxEventIDStmt)
-	defer internal.CloseAndLogIfError(ctx, stmt, "SelectMaxEventID: stmt.close() failed")
+	defer external.CloseAndLogIfError(ctx, stmt, "SelectMaxEventID: stmt.close() failed")
 	err = stmt.QueryRowContext(ctx).Scan(&nullableID)
 	if nullableID.Valid {
 		id = nullableID.Int64
@@ -332,7 +332,7 @@ func (s *outputRoomEventsStatements) InsertEvent(
 		return 0, err
 	}
 	insertStmt := sqlutil.TxStmt(txn, s.insertEventStmt)
-	defer internal.CloseAndLogIfError(ctx, insertStmt, "InsertEvent: stmt.close() failed")
+	defer external.CloseAndLogIfError(ctx, insertStmt, "InsertEvent: stmt.close() failed")
 	_, err = insertStmt.ExecContext(
 		ctx,
 		streamPos,
@@ -379,13 +379,13 @@ func (s *outputRoomEventsStatements) SelectRecentEvents(
 		if err != nil {
 			return nil, fmt.Errorf("s.prepareWithFilters: %w", err)
 		}
-		defer internal.CloseAndLogIfError(ctx, stmt, "selectRecentEvents: stmt.close() failed")
+		defer external.CloseAndLogIfError(ctx, stmt, "selectRecentEvents: stmt.close() failed")
 
 		rows, err := stmt.QueryContext(ctx, params...)
 		if err != nil {
 			return nil, err
 		}
-		defer internal.CloseAndLogIfError(ctx, rows, "selectRecentEvents: rows.close() failed")
+		defer external.CloseAndLogIfError(ctx, rows, "selectRecentEvents: rows.close() failed")
 		events, err := rowsToStreamEvents(rows)
 		if err != nil {
 			return nil, err
@@ -439,13 +439,13 @@ func (s *outputRoomEventsStatements) SelectEvents(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, stmt, "SelectEvents: stmt.close() failed")
+	defer external.CloseAndLogIfError(ctx, stmt, "SelectEvents: stmt.close() failed")
 
 	rows, err := stmt.QueryContext(ctx, params...)
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectEvents: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectEvents: rows.close() failed")
 	streamEvents, err := rowsToStreamEvents(rows)
 	if err != nil {
 		return nil, err
@@ -546,13 +546,13 @@ func (s *outputRoomEventsStatements) SelectContextBeforeEvent(
 	if err != nil {
 		return
 	}
-	defer internal.CloseAndLogIfError(ctx, stmt, "SelectContextBeforeEvent: stmt.close() failed")
+	defer external.CloseAndLogIfError(ctx, stmt, "SelectContextBeforeEvent: stmt.close() failed")
 
 	rows, err := stmt.QueryContext(ctx, params...)
 	if err != nil {
 		return
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "rows.close() failed")
 
 	for rows.Next() {
 		var (
@@ -588,13 +588,13 @@ func (s *outputRoomEventsStatements) SelectContextAfterEvent(
 	if err != nil {
 		return
 	}
-	defer internal.CloseAndLogIfError(ctx, stmt, "SelectContextAfterEvent: stmt.close() failed")
+	defer external.CloseAndLogIfError(ctx, stmt, "SelectContextAfterEvent: stmt.close() failed")
 
 	rows, err := stmt.QueryContext(ctx, params...)
 	if err != nil {
 		return
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "rows.close() failed")
 
 	for rows.Next() {
 		var (
@@ -648,12 +648,12 @@ func (s *outputRoomEventsStatements) ReIndex(ctx context.Context, txn *sql.Tx, l
 		return nil, err
 	}
 
-	defer internal.CloseAndLogIfError(ctx, stmt, "selectEvents: stmt.close() failed")
+	defer external.CloseAndLogIfError(ctx, stmt, "selectEvents: stmt.close() failed")
 	rows, err := sqlutil.TxStmt(txn, stmt).QueryContext(ctx, params...)
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "rows.close() failed")
 
 	var eventID string
 	var id int64

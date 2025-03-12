@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/relayapi/storage/postgres"
 	"github.com/element-hq/dendrite/relayapi/storage/sqlite3"
 	"github.com/element-hq/dendrite/relayapi/storage/tables"

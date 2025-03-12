@@ -11,8 +11,8 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/roomserver/storage/tables"
 	"github.com/element-hq/dendrite/roomserver/types"
 	"github.com/lib/pq"
@@ -20,7 +20,7 @@ import (
 
 const eventTypesSchema = `
 -- Numeric versions of the event "type"s. Event types tend to be taken from a
--- small internal pool. Assigning each a numeric ID should reduce the amount of
+-- small external pool. Assigning each a numeric ID should reduce the amount of
 -- data that needs to be stored and fetched from the database.
 -- It also means that many operations can work with int64 arrays rather than
 -- string arrays which may help reduce GC pressure.
@@ -35,7 +35,7 @@ const eventTypesSchema = `
 -- Picking well-known numeric IDs for the events types that require special
 -- attention during state conflict resolution means that we write that code
 -- using numeric constants.
--- It also means that the numeric IDs for internal event types should be
+-- It also means that the numeric IDs for external event types should be
 -- consistent between different instances which might make ad-hoc debugging
 -- easier.
 -- Other event types are automatically assigned numeric IDs starting from 2**16.
@@ -132,7 +132,7 @@ func (s *eventTypeStatements) BulkSelectEventTypeNID(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "bulkSelectEventTypeNID: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "bulkSelectEventTypeNID: rows.close() failed")
 
 	result := make(map[string]types.EventTypeNID, len(eventTypes))
 	var eventType string

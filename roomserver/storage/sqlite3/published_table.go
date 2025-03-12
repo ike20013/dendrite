@@ -10,8 +10,8 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/roomserver/storage/sqlite3/deltas"
 	"github.com/element-hq/dendrite/roomserver/storage/tables"
 )
@@ -112,7 +112,7 @@ func (s *publishedStatements) SelectAllPublishedRooms(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectAllPublishedStmt: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectAllPublishedStmt: rows.close() failed")
 
 	var roomIDs []string
 	var roomID string

@@ -6,7 +6,7 @@ import (
 	"github.com/element-hq/dendrite/clientapi/auth"
 	"github.com/element-hq/dendrite/clientapi/auth/authtypes"
 	"github.com/element-hq/dendrite/clientapi/httputil"
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/element-hq/dendrite/userapi/api"
 	"github.com/matrix-org/gomatrixserverlib"
@@ -82,8 +82,8 @@ func Password(
 	sessions.addCompletedSessionStage(sessionID, authtypes.LoginTypePassword)
 
 	// Check the new password strength.
-	if err := internal.ValidatePassword(r.NewPassword); err != nil {
-		return *internal.PasswordResponse(err)
+	if err := external.ValidatePassword(r.NewPassword); err != nil {
+		return *external.PasswordResponse(err)
 	}
 
 	// Get the local part.

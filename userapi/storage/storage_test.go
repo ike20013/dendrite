@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/syncapi/synctypes"
 	"github.com/element-hq/dendrite/userapi/types"
 	"github.com/matrix-org/gomatrixserverlib"
@@ -20,7 +20,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 
 	"github.com/element-hq/dendrite/clientapi/auth/authtypes"
-	"github.com/element-hq/dendrite/internal/pushrules"
+	"github.com/element-hq/dendrite/external/pushrules"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/element-hq/dendrite/test"
 	"github.com/element-hq/dendrite/test/testrig"

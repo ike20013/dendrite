@@ -16,12 +16,12 @@ import (
 	"github.com/element-hq/dendrite/cmd/dendrite-demo-yggdrasil/signing"
 	"github.com/element-hq/dendrite/cmd/dendrite-demo-yggdrasil/yggconn"
 	"github.com/element-hq/dendrite/cmd/dendrite-demo-yggdrasil/yggrooms"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/caching"
+	"github.com/element-hq/dendrite/external/httputil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/federationapi"
-	"github.com/element-hq/dendrite/federationapi/api"
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/caching"
-	"github.com/element-hq/dendrite/internal/httputil"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/fed
 	"github.com/element-hq/dendrite/roomserver"
 	"github.com/element-hq/dendrite/setup"
 	basepkg "github.com/element-hq/dendrite/setup/base"
@@ -163,11 +163,11 @@ func (m *DendriteMonolith) Start() {
 		logrus.Fatalf("Failed to start due to configuration errors")
 	}
 
-	internal.SetupStdLogging()
-	internal.SetupHookLogging(cfg.Logging)
-	internal.SetupPprof()
+	external.SetupStdLogging()
+	external.SetupHookLogging(cfg.Logging)
+	external.SetupPprof()
 
-	logrus.Infof("Dendrite version %s", internal.VersionString())
+	logrus.Infof("Dendrite version %s", external.VersionString())
 
 	if !cfg.ClientAPI.RegistrationDisabled && cfg.ClientAPI.OpenRegistrationWithoutVerificationEnabled {
 		logrus.Warn("Open registration is enabled")
@@ -186,7 +186,7 @@ func (m *DendriteMonolith) Start() {
 			Environment:      cfg.Global.Sentry.Environment,
 			Debug:            true,
 			ServerName:       string(cfg.Global.ServerName),
-			Release:          "dendrite@" + internal.VersionString(),
+			Release:          "dendrite@" + external.VersionString(),
 			AttachStacktrace: true,
 		})
 		if err != nil {

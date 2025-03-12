@@ -18,7 +18,7 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/element-hq/dendrite/userapi/storage"
 	"github.com/matrix-org/gomatrixserverlib/spec"
@@ -69,7 +69,7 @@ func (p *phoneHomeStats) collect() {
 	// general information
 	p.stats["homeserver"] = p.serverName
 	p.stats["monolith"] = p.isMonolith
-	p.stats["version"] = internal.VersionString()
+	p.stats["version"] = external.VersionString()
 	p.stats["timestamp"] = time.Now().Unix()
 	p.stats["go_version"] = runtime.Version()
 	p.stats["go_arch"] = runtime.GOARCH
@@ -148,7 +148,7 @@ func (p *phoneHomeStats) collect() {
 		logrus.WithError(err).Error("Unable to create phone-home statistics request")
 		return
 	}
-	request.Header.Set("User-Agent", "Dendrite/"+internal.VersionString())
+	request.Header.Set("User-Agent", "Dendrite/"+external.VersionString())
 
 	_, err = p.client.Do(request)
 	if err != nil {

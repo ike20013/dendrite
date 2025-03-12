@@ -13,7 +13,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/element-hq/dendrite/internal/eventutil"
+	"github.com/element-hq/dendrite/external/eventutil"
 	"github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/roomserver/internal/input"
 	"github.com/element-hq/dendrite/roomserver/internal/query"

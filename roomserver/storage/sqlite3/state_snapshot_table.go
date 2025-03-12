@@ -14,8 +14,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/roomserver/storage/tables"
 	"github.com/element-hq/dendrite/roomserver/types"
 	"github.com/matrix-org/util"
@@ -119,7 +119,7 @@ func (s *stateSnapshotStatements) BulkSelectStateBlockNIDs(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "bulkSelectStateBlockNIDs: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "bulkSelectStateBlockNIDs: rows.close() failed")
 	results := make([]types.StateBlockNIDList, len(stateNIDs))
 	i := 0
 	var stateBlockNIDsJSON string
@@ -159,7 +159,7 @@ func (s *stateSnapshotStatements) selectStateBlockNIDsForRoomNID(
 	if err != nil {
 		return res, nil
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectStateBlockNIDsForRoomNID: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectStateBlockNIDsForRoomNID: rows.close() failed")
 
 	var stateBlockNIDs []types.StateBlockNID
 	var stateBlockNIDsJSON string

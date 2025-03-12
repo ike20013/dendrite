@@ -21,10 +21,10 @@ import (
 
 	clientapi "github.com/element-hq/dendrite/clientapi/api"
 	"github.com/element-hq/dendrite/clientapi/auth/authtypes"
-	"github.com/element-hq/dendrite/internal/pushrules"
+	"github.com/element-hq/dendrite/external/pushrules"
 )
 
-// UserInternalAPI is the internal API for information about users and devices.
+// UserInternalAPI is the external API for information about users and devices.
 type UserInternalAPI interface {
 	SyncUserAPI
 	ClientUserAPI

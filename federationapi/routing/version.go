@@ -8,7 +8,7 @@ package routing
 import (
 	"net/http"
 
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
 	"github.com/matrix-org/util"
 )
 
@@ -28,7 +28,7 @@ func Version() util.JSONResponse {
 		JSON: &version{
 			server{
 				Name:    "Dendrite",
-				Version: internal.VersionString(),
+				Version: external.VersionString(),
 			},
 		},
 	}

@@ -13,8 +13,8 @@ import (
 	"github.com/sirupsen/logrus"
 
 	asAPI "github.com/element-hq/dendrite/appservice/api"
+	"github.com/element-hq/dendrite/external/caching"
 	fsAPI "github.com/element-hq/dendrite/federationapi/api"
-	"github.com/element-hq/dendrite/internal/caching"
 	"github.com/element-hq/dendrite/roomserver/acls"
 	"github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/roomserver/internal/input"

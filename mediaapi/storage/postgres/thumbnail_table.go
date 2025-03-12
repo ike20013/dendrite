@@ -12,8 +12,8 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/mediaapi/storage/tables"
 	"github.com/element-hq/dendrite/mediaapi/types"
 	"github.com/matrix-org/gomatrixserverlib/spec"
@@ -141,7 +141,7 @@ func (s *thumbnailStatements) SelectThumbnails(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectThumbnails: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectThumbnails: rows.close() failed")
 
 	var thumbnails []*types.ThumbnailMetadata
 	for rows.Next() {

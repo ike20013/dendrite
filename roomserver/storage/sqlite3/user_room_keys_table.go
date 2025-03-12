@@ -13,8 +13,8 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/roomserver/storage/tables"
 	"github.com/element-hq/dendrite/roomserver/types"
 	"github.com/matrix-org/gomatrixserverlib/spec"
@@ -142,13 +142,13 @@ func (s *userRoomKeysStatements) BulkSelectUserNIDs(ctx context.Context, txn *sq
 	params := append(roomNIDs, senders...)
 
 	stmt := sqlutil.TxStmt(txn, selectStmt)
-	defer internal.CloseAndLogIfError(ctx, stmt, "failed to close statement")
+	defer external.CloseAndLogIfError(ctx, stmt, "failed to close statement")
 
 	rows, err := stmt.QueryContext(ctx, params...)
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "failed to close rows")
+	defer external.CloseAndLogIfError(ctx, rows, "failed to close rows")
 
 	result := make(map[string]types.UserRoomKeyPair, len(params))
 	var publicKey []byte
@@ -172,7 +172,7 @@ func (s *userRoomKeysStatements) SelectAllPublicKeysForUser(ctx context.Context,
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "SelectAllPublicKeysForUser: failed to close rows")
+	defer external.CloseAndLogIfError(ctx, rows, "SelectAllPublicKeysForUser: failed to close rows")
 
 	resultMap := make(map[types.RoomNID]ed25519.PublicKey)
 

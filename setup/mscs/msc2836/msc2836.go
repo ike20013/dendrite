@@ -19,10 +19,11 @@ import (
 	"strings"
 	"time"
 
+	"github.com/element-hq/dendrite/external/hooks"
+	"github.com/element-hq/dendrite/external/httputil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	fs "github.com/element-hq/dendrite/federationapi/api"
-	"github.com/element-hq/dendrite/internal/hooks"
-	"github.com/element-hq/dendrite/internal/httputil"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	roo
 	roomserver "github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/roomserver/types"
 	"github.com/element-hq/dendrite/setup/config"

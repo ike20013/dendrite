@@ -9,7 +9,7 @@ import (
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/tidwall/gjson"
 
-	"github.com/element-hq/dendrite/internal/eventutil"
+	"github.com/element-hq/dendrite/external/eventutil"
 	"github.com/element-hq/dendrite/roomserver/api"
 	rstypes "github.com/element-hq/dendrite/roomserver/types"
 	"github.com/element-hq/dendrite/syncapi/synctypes"

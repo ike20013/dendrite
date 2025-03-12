@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
+	"github.com/element-hq/dendrite/external/caching"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/federationapi/storage"
-	"github.com/element-hq/dendrite/internal/caching"
-	"github.com/element-hq/dendrite/internal/sqlutil"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/element-hq/dendrite/test"
 	"github.com/matrix-org/gomatrixserverlib"

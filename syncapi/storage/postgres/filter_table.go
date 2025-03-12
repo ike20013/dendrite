@@ -11,7 +11,7 @@ import (
 	"database/sql"
 	"encoding/json"
 
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/syncapi/storage/tables"
 	"github.com/element-hq/dendrite/syncapi/synctypes"
 	"github.com/matrix-org/gomatrixserverlib"

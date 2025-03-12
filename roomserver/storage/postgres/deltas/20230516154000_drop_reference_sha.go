@@ -11,7 +11,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
 	"github.com/lib/pq"
 	"github.com/matrix-org/util"
 )
@@ -39,7 +39,7 @@ func UpDropEventReferenceSHAPrevEvents(ctx context.Context, tx *sql.Tx) error {
 	if err != nil {
 		return fmt.Errorf("failed to query duplicate event ids")
 	}
-	defer internal.CloseAndLogIfError(ctx, dupeRows, "failed to close rows")
+	defer external.CloseAndLogIfError(ctx, dupeRows, "failed to close rows")
 
 	var prevEvents []string
 	var prevEventID string
@@ -60,7 +60,7 @@ func UpDropEventReferenceSHAPrevEvents(ctx context.Context, tx *sql.Tx) error {
 		if err != nil {
 			return fmt.Errorf("failed to query duplicate event ids")
 		}
-		defer internal.CloseAndLogIfError(ctx, dupeNIDsRows, "failed to close rows")
+		defer external.CloseAndLogIfError(ctx, dupeNIDsRows, "failed to close rows")
 		var dupeNIDs []int64
 		for dupeNIDsRows.Next() {
 			var nids pq.Int64Array

@@ -11,8 +11,8 @@ import (
 	"database/sql"
 	"encoding/json"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/syncapi/storage/postgres/deltas"
 	"github.com/element-hq/dendrite/syncapi/storage/tables"
 	"github.com/element-hq/dendrite/syncapi/types"
@@ -102,7 +102,7 @@ func (s *sendToDeviceStatements) SelectSendToDeviceMessages(
 	if err != nil {
 		return
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "SelectSendToDeviceMessages: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "SelectSendToDeviceMessages: rows.close() failed")
 
 	for rows.Next() {
 		var id types.StreamPosition

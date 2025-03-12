@@ -11,7 +11,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/sirupsen/logrus"
 )
@@ -27,7 +27,7 @@ func ParseFlags(monolith bool) *config.Dendrite {
 	flag.Parse()
 
 	if *version {
-		fmt.Println(internal.VersionString())
+		fmt.Println(external.VersionString())
 		os.Exit(0)
 	}
 

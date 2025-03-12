@@ -3,7 +3,7 @@ package streams
 import (
 	"context"
 
-	"github.com/element-hq/dendrite/internal/eventutil"
+	"github.com/element-hq/dendrite/external/eventutil"
 	"github.com/element-hq/dendrite/syncapi/storage"
 	"github.com/element-hq/dendrite/syncapi/types"
 )

@@ -11,7 +11,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/element-hq/dendrite/internal/httputil"
+	"github.com/element-hq/dendrite/external/httputil"
 	relayInternal "github.com/element-hq/dendrite/relayapi/internal"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/getsentry/sentry-go"

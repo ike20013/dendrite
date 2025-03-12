@@ -13,9 +13,9 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/federationapi/storage/tables"
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )
@@ -133,7 +133,7 @@ func (s *notaryServerKeysMetadataStatements) SelectKeys(ctx context.Context, txn
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectNotaryKeyResponsesStmt close failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectNotaryKeyResponsesStmt close failed")
 	var results []gomatrixserverlib.ServerKeys
 	for rows.Next() {
 		var sk gomatrixserverlib.ServerKeys

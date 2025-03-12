@@ -13,7 +13,7 @@ import (
 	"errors"
 	"fmt"
 
-	//"github.com/element-hq/dendrite/roomserver/internal"
+	//"github.com/element-hq/dendrite/roomserver/external"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
@@ -24,8 +24,8 @@ import (
 	"github.com/element-hq/dendrite/syncapi/synctypes"
 
 	"github.com/element-hq/dendrite/clientapi/auth/authtypes"
-	fsAPI "github.com/element-hq/dendrite/federationapi/api"
-	"github.com/element-hq/dendrite/internal/caching"
+	"github.com/element-hq/dendrite/external/caching"
+	fsAPI "github.com/element-hq/dendrite/federation
 	"github.com/element-hq/dendrite/roomserver/acls"
 	"github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/roomserver/internal/helpers"

@@ -10,8 +10,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/eventutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/eventutil"
 	"github.com/gorilla/mux"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
@@ -21,7 +21,7 @@ import (
 	"golang.org/x/exp/constraints"
 
 	clientapi "github.com/element-hq/dendrite/clientapi/api"
-	"github.com/element-hq/dendrite/internal/httputil"
+	"github.com/element-hq/dendrite/external/httputil"
 	roomserverAPI "github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/element-hq/dendrite/setup/jetstream"
@@ -381,8 +381,8 @@ func AdminResetPassword(req *http.Request, cfg *config.ClientAPI, device *api.De
 		}
 	}
 
-	if err = internal.ValidatePassword(request.Password); err != nil {
-		return *internal.PasswordResponse(err)
+	if err = external.ValidatePassword(request.Password); err != nil {
+		return *external.PasswordResponse(err)
 	}
 
 	updateReq := &api.PerformPasswordUpdateRequest{

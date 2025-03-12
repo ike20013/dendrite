@@ -21,9 +21,9 @@ import (
 	"github.com/element-hq/dendrite/cmd/dendrite-demo-pinecone/monolith"
 	"github.com/element-hq/dendrite/cmd/dendrite-demo-pinecone/relay"
 	"github.com/element-hq/dendrite/cmd/dendrite-demo-yggdrasil/signing"
-	"github.com/element-hq/dendrite/federationapi/api"
-	"github.com/element-hq/dendrite/internal/httputil"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/httputil"
+	"github.com/element-hq/dendrite/external/sqlutil"
+	"github.com/element-hq/dendrite/federationapi/
 	"github.com/element-hq/dendrite/setup/process"
 	userapiAPI "github.com/element-hq/dendrite/userapi/api"
 	"github.com/matrix-org/gomatrixserverlib"

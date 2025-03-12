@@ -7,12 +7,13 @@ import (
 	"sync"
 	"time"
 
+	"github.com/element-hq/dendrite/external/caching"
+
 	"github.com/element-hq/dendrite/federationapi/api"
 	"github.com/element-hq/dendrite/federationapi/queue"
 	"github.com/element-hq/dendrite/federationapi/statistics"
 	"github.com/element-hq/dendrite/federationapi/storage"
-	"github.com/element-hq/dendrite/federationapi/storage/cache"
-	"github.com/element-hq/dendrite/internal/caching"
+	"github.com/element-hq/dendrite/external/caching"
 	roomserverAPI "github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/matrix-org/gomatrix"
@@ -142,7 +143,7 @@ func failBlacklistableError(err error, stats *statistics.ServerStatistics) (unti
 	if mxerr.Code == 401 { // invalid signature in X-Matrix header
 		return stats.Failure()
 	}
-	if mxerr.Code >= 500 && mxerr.Code < 600 { // internal server errors
+	if mxerr.Code >= 500 && mxerr.Code < 600 { // external server errors
 		return stats.Failure()
 	}
 	return

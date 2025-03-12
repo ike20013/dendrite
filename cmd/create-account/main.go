@@ -20,7 +20,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
 	"github.com/tidwall/gjson"
 
 	"github.com/sirupsen/logrus"
@@ -86,7 +86,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	if err := internal.ValidateUsername(*username, cfg.Global.ServerName); err != nil {
+	if err := external.ValidateUsername(*username, cfg.Global.ServerName); err != nil {
 		logrus.WithError(err).Error("Specified username is invalid")
 		os.Exit(1)
 	}
@@ -96,7 +96,7 @@ func main() {
 		logrus.Fatalln(err)
 	}
 
-	if err = internal.ValidatePassword(pass); err != nil {
+	if err = external.ValidatePassword(pass); err != nil {
 		logrus.WithError(err).Error("Specified password is invalid")
 		os.Exit(1)
 	}

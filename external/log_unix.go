@@ -7,7 +7,7 @@
 //go:build !windows
 // +build !windows
 
-package internal
+package external
 
 import (
 	"io"

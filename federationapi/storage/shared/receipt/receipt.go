@@ -14,7 +14,7 @@ import "fmt"
 
 // Receipt is a wrapper type used to represent a nid that corresponds to a unique row entry
 // in some database table.
-// The internal nid value cannot be modified after a Receipt has been created.
+// The external nid value cannot be modified after a Receipt has been created.
 // This guarantees a receipt will always refer to the same table entry that it was created
 // to represent.
 type Receipt struct {

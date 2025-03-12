@@ -12,16 +12,16 @@ import (
 	"testing"
 	"time"
 
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/setup/jetstream"
 	"github.com/element-hq/dendrite/setup/process"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/fclient"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 
+	"github.com/element-hq/dendrite/external/caching"
 	"github.com/element-hq/dendrite/federationapi/api"
 	"github.com/element-hq/dendrite/federationapi/routing"
-	"github.com/element-hq/dendrite/internal/caching"
 	"github.com/element-hq/dendrite/setup/config"
 )
 

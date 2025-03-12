@@ -12,7 +12,7 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/relayapi/internal"
 	"github.com/element-hq/dendrite/relayapi/routing"
 	"github.com/element-hq/dendrite/relayapi/storage/shared"

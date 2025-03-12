@@ -11,8 +11,8 @@ import (
 	"database/sql"
 	"encoding/json"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/userapi/storage/tables"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )
@@ -92,7 +92,7 @@ func (s *accountDataStatements) SelectAccountData(
 	if err != nil {
 		return nil, nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectAccountData: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectAccountData: rows.close() failed")
 
 	global := map[string]json.RawMessage{}
 	rooms := map[string]map[string]json.RawMessage{}

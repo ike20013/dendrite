@@ -14,8 +14,8 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/roomserver/api"
 	rstypes "github.com/element-hq/dendrite/roomserver/types"
 	"github.com/element-hq/dendrite/syncapi/storage/postgres/deltas"
@@ -296,7 +296,7 @@ func (s *outputRoomEventsStatements) SelectStateInRange(
 	if err != nil {
 		return nil, nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectStateInRange: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectStateInRange: rows.close() failed")
 	// Fetch all the state change events for all rooms between the two positions then loop each event and:
 	//  - Keep a cache of the event by ID (99% of state change events are for the event itself)
 	//  - For each room ID, build up an array of event IDs which represents cumulative adds/removes
@@ -438,7 +438,7 @@ func (s *outputRoomEventsStatements) SelectRecentEvents(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectRecentEvents: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectRecentEvents: rows.close() failed")
 
 	result := make(map[string]types.RecentEvents)
 
@@ -541,7 +541,7 @@ func (s *outputRoomEventsStatements) SelectEvents(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectEvents: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectEvents: rows.close() failed")
 	streamEvents, err := rowsToStreamEvents(rows)
 	if err != nil {
 		return nil, err
@@ -600,7 +600,7 @@ func (s *outputRoomEventsStatements) SelectContextBeforeEvent(
 	if err != nil {
 		return
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "rows.close() failed")
 
 	for rows.Next() {
 		var (
@@ -635,7 +635,7 @@ func (s *outputRoomEventsStatements) SelectContextAfterEvent(
 	if err != nil {
 		return
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "rows.close() failed")
 
 	for rows.Next() {
 		var (
@@ -707,7 +707,7 @@ func (s *outputRoomEventsStatements) ReIndex(ctx context.Context, txn *sql.Tx, l
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "rows.close() failed")
 
 	var eventID string
 	var id int64

@@ -7,10 +7,10 @@
 package relayapi
 
 import (
-	"github.com/element-hq/dendrite/federationapi/producers"
-	"github.com/element-hq/dendrite/internal/caching"
-	"github.com/element-hq/dendrite/internal/httputil"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/caching"
+	"github.com/element-hq/dendrite/external/httputil"
+	"github.com/element-hq/dendrite/external/sqlutil"
+	"github.com/element-hq/dendrite/federationapi
 	"github.com/element-hq/dendrite/relayapi/api"
 	"github.com/element-hq/dendrite/relayapi/internal"
 	"github.com/element-hq/dendrite/relayapi/routing"

@@ -11,8 +11,8 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	rstypes "github.com/element-hq/dendrite/roomserver/types"
 	"github.com/element-hq/dendrite/syncapi/storage/tables"
 	"github.com/element-hq/dendrite/syncapi/types"
@@ -153,7 +153,7 @@ func (s *membershipsStatements) SelectMemberships(
 	if err != nil {
 		return
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "SelectMemberships: failed to close rows")
+	defer external.CloseAndLogIfError(ctx, rows, "SelectMemberships: failed to close rows")
 	var (
 		eventID string
 	)

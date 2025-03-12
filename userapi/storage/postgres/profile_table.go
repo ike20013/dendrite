@@ -12,8 +12,8 @@ import (
 	"fmt"
 
 	"github.com/element-hq/dendrite/clientapi/auth/authtypes"
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/userapi/storage/tables"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )
@@ -147,7 +147,7 @@ func (s *profilesStatements) SelectProfilesBySearch(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectProfilesBySearch: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectProfilesBySearch: rows.close() failed")
 	for rows.Next() {
 		var profile authtypes.Profile
 		if err := rows.Scan(&profile.Localpart, &profile.ServerName, &profile.DisplayName, &profile.AvatarURL); err != nil {

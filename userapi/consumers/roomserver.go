@@ -17,9 +17,9 @@ import (
 	"github.com/nats-io/nats.go"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/element-hq/dendrite/internal/eventutil"
-	"github.com/element-hq/dendrite/internal/pushgateway"
-	"github.com/element-hq/dendrite/internal/pushrules"
+	"github.com/element-hq/dendrite/external/eventutil"
+	"github.com/element-hq/dendrite/external/pushgateway"
+	"github.com/element-hq/dendrite/external/pushrules"
 	rsapi "github.com/element-hq/dendrite/roomserver/api"
 	rstypes "github.com/element-hq/dendrite/roomserver/types"
 	"github.com/element-hq/dendrite/setup/config"
@@ -597,7 +597,7 @@ func (s *OutputRoomEventConsumer) notifyLocal(ctx context.Context, event *rstype
 
 	// Push gateways are out of our control, and we cannot risk
 	// looking up the server on a misbehaving push gateway. Each user
-	// receives a goroutine now that all internal API calls have been
+	// receives a goroutine now that all external API calls have been
 	// made.
 	//
 	// TODO: think about bounding this to one per user, and what

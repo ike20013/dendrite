@@ -9,8 +9,8 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	rstypes "github.com/element-hq/dendrite/roomserver/types"
 	"github.com/element-hq/dendrite/syncapi/storage/tables"
 	"github.com/element-hq/dendrite/syncapi/types"
@@ -128,7 +128,7 @@ func (s *outputRoomEventsTopologyStatements) SelectEventIDsInRange(
 	} else if err != nil {
 		return
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectEventIDsInRange: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectEventIDsInRange: rows.close() failed")
 
 	// Return the IDs.
 	var eventID string

@@ -10,8 +10,8 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/lib/pq"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
@@ -118,7 +118,7 @@ func (s *relayQueueStatements) SelectQueueEntries(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "queueFromStmt: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "queueFromStmt: rows.close() failed")
 	var result []int64
 	for rows.Next() {
 		var nid int64

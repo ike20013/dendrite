@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
 	"github.com/matrix-org/util"
 	cache "github.com/patrickmn/go-cache"
 )
@@ -28,7 +28,7 @@ type SharedSecretRegistrationRequest struct {
 }
 
 func NewSharedSecretRegistrationRequest(reader io.ReadCloser) (*SharedSecretRegistrationRequest, error) {
-	defer internal.CloseAndLogIfError(context.Background(), reader, "NewSharedSecretRegistrationRequest: failed to close request body")
+	defer external.CloseAndLogIfError(context.Background(), reader, "NewSharedSecretRegistrationRequest: failed to close request body")
 	var ssrr SharedSecretRegistrationRequest
 	err := json.NewDecoder(reader).Decode(&ssrr)
 	if err != nil {

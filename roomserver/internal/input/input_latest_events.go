@@ -17,8 +17,8 @@ import (
 	"github.com/matrix-org/util"
 	"github.com/sirupsen/logrus"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/roomserver/state"
 	"github.com/element-hq/dendrite/roomserver/storage/shared"
@@ -51,7 +51,7 @@ func (r *Inputer) updateLatestEvents(
 	rewritesState bool,
 	historyVisibility gomatrixserverlib.HistoryVisibility,
 ) (err error) {
-	trace, ctx := internal.StartRegion(ctx, "updateLatestEvents")
+	trace, ctx := external.StartRegion(ctx, "updateLatestEvents")
 	defer trace.EndRegion()
 
 	var succeeded bool
@@ -201,7 +201,7 @@ func (u *latestEventsUpdater) doUpdateLatestEvents() error {
 }
 
 func (u *latestEventsUpdater) latestState() error {
-	trace, ctx := internal.StartRegion(u.ctx, "processEventWithMissingState")
+	trace, ctx := external.StartRegion(u.ctx, "processEventWithMissingState")
 	defer trace.EndRegion()
 
 	var err error
@@ -322,7 +322,7 @@ func (u *latestEventsUpdater) calculateLatest(
 	newEvent gomatrixserverlib.PDU,
 	newStateAndRef types.StateAtEventAndReference,
 ) (bool, error) {
-	trace, _ := internal.StartRegion(u.ctx, "calculateLatest")
+	trace, _ := external.StartRegion(u.ctx, "calculateLatest")
 	defer trace.EndRegion()
 
 	// First of all, get a list of all of the events in our current

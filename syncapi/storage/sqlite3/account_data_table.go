@@ -11,8 +11,8 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/syncapi/storage/tables"
 	"github.com/element-hq/dendrite/syncapi/synctypes"
 	"github.com/element-hq/dendrite/syncapi/types"
@@ -99,7 +99,7 @@ func (s *accountDataStatements) SelectAccountDataInRange(
 	if err != nil {
 		return
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectAccountDataInRange: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectAccountDataInRange: rows.close() failed")
 
 	var dataType string
 	var roomID string

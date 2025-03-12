@@ -11,8 +11,8 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/roomserver/storage/tables"
 	"github.com/element-hq/dendrite/roomserver/types"
 )
@@ -110,7 +110,7 @@ func (s *inviteStatements) UpdateInviteRetired(
 	if err != nil {
 		return
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "UpdateInviteRetired: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "UpdateInviteRetired: rows.close() failed")
 	var inviteEventID string
 	for rows.Next() {
 		if err = rows.Scan(&inviteEventID); err != nil {
@@ -139,7 +139,7 @@ func (s *inviteStatements) SelectInviteActiveForUserInRoom(
 	if err != nil {
 		return nil, nil, nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectInviteActiveForUserInRoom: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectInviteActiveForUserInRoom: rows.close() failed")
 	var result []types.EventStateKeyNID
 	var eventIDs []string
 	var eventID string

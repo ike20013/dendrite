@@ -9,8 +9,8 @@ package internal
 import (
 	"context"
 
-	"github.com/element-hq/dendrite/federationapi/storage/shared/receipt"
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/federationapi
 	"github.com/element-hq/dendrite/relayapi/api"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/fclient"
@@ -130,8 +130,8 @@ func (r *RelayInternalAPI) QueryTransactions(
 
 func (r *RelayInternalAPI) processTransaction(txn *gomatrixserverlib.Transaction) {
 	logrus.Warn("Processing transaction from relay server")
-	mu := internal.NewMutexByRoom()
-	t := internal.NewTxnReq(
+	mu := external.NewMutexByRoom()
+	t := external.NewTxnReq(
 		r.rsAPI,
 		nil,
 		r.serverName,

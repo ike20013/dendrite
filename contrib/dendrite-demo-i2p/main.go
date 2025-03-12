@@ -11,10 +11,10 @@ import (
 	"os"
 	"time"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/caching"
-	"github.com/element-hq/dendrite/internal/httputil"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/caching"
+	"github.com/element-hq/dendrite/external/httputil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/setup/jetstream"
 	"github.com/element-hq/dendrite/setup/process"
 	"github.com/getsentry/sentry-go"
@@ -53,13 +53,13 @@ func main() {
 	}
 	processCtx := process.NewProcessContext()
 
-	internal.SetupStdLogging()
-	internal.SetupHookLogging(cfg.Logging)
-	internal.SetupPprof()
+	external.SetupStdLogging()
+	external.SetupHookLogging(cfg.Logging)
+	external.SetupPprof()
 
 	basepkg.PlatformSanityChecks()
 
-	logrus.Infof("Dendrite version %s", internal.VersionString())
+	logrus.Infof("Dendrite version %s", external.VersionString())
 	if !cfg.ClientAPI.RegistrationDisabled && cfg.ClientAPI.OpenRegistrationWithoutVerificationEnabled {
 		logrus.Warn("Open registration is enabled")
 	}
@@ -95,7 +95,7 @@ func main() {
 			Environment:      cfg.Global.Sentry.Environment,
 			Debug:            true,
 			ServerName:       string(cfg.Global.ServerName),
-			Release:          "dendrite@" + internal.VersionString(),
+			Release:          "dendrite@" + external.VersionString(),
 			AttachStacktrace: true,
 		})
 		if err != nil {
@@ -163,7 +163,7 @@ func main() {
 		Namespace: "dendrite",
 		Name:      "up",
 		ConstLabels: map[string]string{
-			"version": internal.VersionString(),
+			"version": external.VersionString(),
 		},
 	})
 	upCounter.Add(1)

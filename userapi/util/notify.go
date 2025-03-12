@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/element-hq/dendrite/internal/pushgateway"
+	"github.com/element-hq/dendrite/external/pushgateway"
 	"github.com/element-hq/dendrite/userapi/storage"
 	"github.com/element-hq/dendrite/userapi/storage/tables"
 	"github.com/matrix-org/gomatrixserverlib/spec"

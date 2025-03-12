@@ -12,10 +12,10 @@ import (
 	"database/sql"
 	"fmt"
 
+	"github.com/element-hq/dendrite/external/caching"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/federationapi/storage/postgres/deltas"
 	"github.com/element-hq/dendrite/federationapi/storage/shared"
-	"github.com/element-hq/dendrite/internal/caching"
-	"github.com/element-hq/dendrite/internal/sqlutil"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )

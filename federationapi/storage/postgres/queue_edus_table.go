@@ -12,9 +12,9 @@ import (
 
 	"github.com/lib/pq"
 
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/federationapi/storage/postgres/deltas"
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )
 
@@ -148,7 +148,7 @@ func (s *queueEDUsStatements) SelectQueueEDUs(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "queueFromStmt: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "queueFromStmt: rows.close() failed")
 	var result []int64
 	for rows.Next() {
 		var nid int64
@@ -180,7 +180,7 @@ func (s *queueEDUsStatements) SelectQueueEDUServerNames(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "queueFromStmt: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "queueFromStmt: rows.close() failed")
 	var result []spec.ServerName
 	for rows.Next() {
 		var serverName spec.ServerName
@@ -202,7 +202,7 @@ func (s *queueEDUsStatements) SelectExpiredEDUs(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "SelectExpiredEDUs: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "SelectExpiredEDUs: rows.close() failed")
 	var result []int64
 	var nid int64
 	for rows.Next() {

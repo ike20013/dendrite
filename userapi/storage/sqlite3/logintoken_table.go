@@ -11,7 +11,7 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/userapi/api"
 	"github.com/element-hq/dendrite/userapi/storage/tables"
 	"github.com/matrix-org/util"

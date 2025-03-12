@@ -87,14 +87,14 @@ func GetEvent(
 		util.GetLogger(req.Context()).WithError(err).Error("invalid device.UserID")
 		return util.JSONResponse{
 			Code: http.StatusInternalServerError,
-			JSON: spec.Unknown("internal server error"),
+			JSON: spec.Unknown("external server error"),
 		}
 	}
 
 	// Apply history visibility to determine if the user is allowed to view the event
 	events, err = internal.ApplyHistoryVisibilityFilter(ctx, db, rsAPI, events, nil, *userID, "event")
 	if err != nil {
-		logger.WithError(err).Error("GetEvent: internal.ApplyHistoryVisibilityFilter failed")
+		logger.WithError(err).Error("GetEvent: external.ApplyHistoryVisibilityFilter failed")
 		return util.JSONResponse{
 			Code: http.StatusInternalServerError,
 			JSON: spec.InternalServerError{},
@@ -118,7 +118,7 @@ func GetEvent(
 		util.GetLogger(req.Context()).WithError(err).WithField("senderID", events[0].SenderID()).WithField("roomID", *roomID).Error("Failed converting to ClientEvent")
 		return util.JSONResponse{
 			Code: http.StatusInternalServerError,
-			JSON: spec.Unknown("internal server error"),
+			JSON: spec.Unknown("external server error"),
 		}
 	}
 

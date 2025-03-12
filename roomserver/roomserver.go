@@ -7,8 +7,8 @@
 package roomserver
 
 import (
-	"github.com/element-hq/dendrite/internal/caching"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/caching"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/element-hq/dendrite/setup/jetstream"
 	"github.com/element-hq/dendrite/setup/process"
@@ -19,7 +19,7 @@ import (
 	"github.com/element-hq/dendrite/roomserver/storage"
 )
 
-// NewInternalAPI returns a concrete implementation of the internal API.
+// NewInternalAPI returns a concrete implementation of the external API.
 //
 // Many of the methods provided by this API depend on access to a federation API, and so
 // you may wish to call `SetFederationAPI` on the returned struct to avoid nil-dereference errors.

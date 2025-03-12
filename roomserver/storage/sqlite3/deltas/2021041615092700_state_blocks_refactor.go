@@ -12,7 +12,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
 	"github.com/element-hq/dendrite/roomserver/types"
 	"github.com/matrix-org/util"
 	"github.com/sirupsen/logrus"
@@ -66,7 +66,7 @@ func UpStateBlocksRefactor(ctx context.Context, tx *sql.Tx) error {
 	if err != nil {
 		return fmt.Errorf("tx.QueryContext: %w", err)
 	}
-	defer internal.CloseAndLogIfError(context.TODO(), snapshotrows, "rows.close() failed")
+	defer external.CloseAndLogIfError(context.TODO(), snapshotrows, "rows.close() failed")
 	for snapshotrows.Next() {
 		var snapshot types.StateSnapshotNID
 		var room types.RoomNID
@@ -100,7 +100,7 @@ func UpStateBlocksRefactor(ctx context.Context, tx *sql.Tx) error {
 				if berr != nil {
 					return fmt.Errorf("tx.QueryContext (event nids from old block): %w", berr)
 				}
-				defer internal.CloseAndLogIfError(context.TODO(), blockrows, "rows.close() failed")
+				defer external.CloseAndLogIfError(context.TODO(), blockrows, "rows.close() failed")
 				events := types.EventNIDs{}
 				for blockrows.Next() {
 					var event types.EventNID

@@ -28,8 +28,8 @@ import (
 	"github.com/matrix-org/gomatrixserverlib/fclient"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/httputil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/httputil"
 	"github.com/gorilla/mux"
 	"github.com/kardianos/minwinsvc"
 
@@ -64,7 +64,7 @@ func CreateClient(cfg *config.Dendrite, dnsCache *fclient.DNSCache) *fclient.Cli
 		opts = append(opts, fclient.WithDNSCache(dnsCache))
 	}
 	client := fclient.NewClient(opts...)
-	client.SetUserAgent(fmt.Sprintf("Dendrite/%s", internal.VersionString()))
+	client.SetUserAgent(fmt.Sprintf("Dendrite/%s", external.VersionString()))
 	return client
 }
 
@@ -81,7 +81,7 @@ func CreateFederationClient(cfg *config.Dendrite, dnsCache *fclient.DNSCache) fc
 		fclient.WithTimeout(time.Minute * 5),
 		fclient.WithSkipVerify(cfg.FederationAPI.DisableTLSValidation),
 		fclient.WithKeepAlives(!cfg.FederationAPI.DisableHTTPKeepalives),
-		fclient.WithUserAgent(fmt.Sprintf("Dendrite/%s", internal.VersionString())),
+		fclient.WithUserAgent(fmt.Sprintf("Dendrite/%s", external.VersionString())),
 		fclient.WithAllowDenyNetworks(cfg.FederationAPI.AllowNetworkCIDRs, cfg.FederationAPI.DenyNetworkCIDRs),
 	}
 	if cfg.Global.DNSCache.Enabled {
@@ -146,7 +146,7 @@ func SetupAndServeHTTP(
 	tmpl := template.Must(template.ParseFS(staticContent, "static/*.gotmpl"))
 	landingPage := &bytes.Buffer{}
 	if err := tmpl.ExecuteTemplate(landingPage, "index.gotmpl", map[string]string{
-		"Version": internal.VersionString(),
+		"Version": external.VersionString(),
 	}); err != nil {
 		logrus.WithError(err).Fatal("failed to execute landing page template")
 	}

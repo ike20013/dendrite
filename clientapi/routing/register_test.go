@@ -20,9 +20,9 @@ import (
 	"time"
 
 	"github.com/element-hq/dendrite/clientapi/auth/authtypes"
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/caching"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/caching"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/roomserver"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/element-hq/dendrite/setup/jetstream"
@@ -358,7 +358,7 @@ func Test_register(t *testing.T) {
 		{
 			name:              "invalid username",
 			username:          "#totalyNotValid",
-			wantErrorResponse: *internal.UsernameResponse(internal.ErrUsernameInvalid),
+			wantErrorResponse: *external.UsernameResponse(external.ErrUsernameInvalid),
 		},
 		{
 			name:     "numeric username is forbidden",

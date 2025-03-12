@@ -12,8 +12,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/syncapi/storage/sqlite3/deltas"
 	"github.com/element-hq/dendrite/syncapi/storage/tables"
 	"github.com/element-hq/dendrite/syncapi/types"
@@ -112,12 +112,12 @@ func (r *receiptStatements) SelectRoomReceiptsAfter(ctx context.Context, txn *sq
 	if err != nil {
 		return 0, nil, fmt.Errorf("unable to prepare statement: %w", err)
 	}
-	defer internal.CloseAndLogIfError(ctx, prep, "SelectRoomReceiptsAfter: prep.close() failed")
+	defer external.CloseAndLogIfError(ctx, prep, "SelectRoomReceiptsAfter: prep.close() failed")
 	rows, err := sqlutil.TxStmt(txn, prep).QueryContext(ctx, params...)
 	if err != nil {
 		return 0, nil, fmt.Errorf("unable to query room receipts: %w", err)
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "SelectRoomReceiptsAfter: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "SelectRoomReceiptsAfter: rows.close() failed")
 	var res []types.OutputReceiptEvent
 	for rows.Next() {
 		r := types.OutputReceiptEvent{}

@@ -14,7 +14,7 @@ import (
 	"github.com/nats-io/nats.go"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/element-hq/dendrite/internal/pushgateway"
+	"github.com/element-hq/dendrite/external/pushgateway"
 	"github.com/element-hq/dendrite/userapi/storage"
 
 	"github.com/element-hq/dendrite/setup/config"

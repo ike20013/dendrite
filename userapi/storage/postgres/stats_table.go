@@ -15,8 +15,8 @@ import (
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/sirupsen/logrus"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/userapi/api"
 	"github.com/element-hq/dendrite/userapi/storage/tables"
 	"github.com/element-hq/dendrite/userapi/types"
@@ -277,7 +277,7 @@ func (s *statsStatements) registeredUserByType(ctx context.Context, txn *sql.Tx)
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "RegisteredUserByType: failed to close rows")
+	defer external.CloseAndLogIfError(ctx, rows, "RegisteredUserByType: failed to close rows")
 
 	var userType string
 	var count int64
@@ -328,7 +328,7 @@ func (s *statsStatements) r30Users(ctx context.Context, txn *sql.Tx) (map[string
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "R30Users: failed to close rows")
+	defer external.CloseAndLogIfError(ctx, rows, "R30Users: failed to close rows")
 
 	var platform string
 	var count int64
@@ -366,7 +366,7 @@ func (s *statsStatements) r30UsersV2(ctx context.Context, txn *sql.Tx) (map[stri
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "R30UsersV2: failed to close rows")
+	defer external.CloseAndLogIfError(ctx, rows, "R30UsersV2: failed to close rows")
 
 	var platform string
 	var count int64

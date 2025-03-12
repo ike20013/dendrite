@@ -12,7 +12,7 @@ import (
 
 	"github.com/matrix-org/gomatrixserverlib/spec"
 
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
 	"github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/roomserver/internal/helpers"
 	"github.com/element-hq/dendrite/roomserver/storage/shared"
@@ -29,7 +29,7 @@ func (r *Inputer) updateMemberships(
 	updater *shared.RoomUpdater,
 	removed, added []types.StateEntry,
 ) ([]api.OutputEvent, error) {
-	trace, ctx := internal.StartRegion(ctx, "updateMemberships")
+	trace, ctx := external.StartRegion(ctx, "updateMemberships")
 	defer trace.EndRegion()
 
 	changes := membershipChanges(removed, added)

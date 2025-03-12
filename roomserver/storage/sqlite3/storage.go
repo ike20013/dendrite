@@ -13,8 +13,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/element-hq/dendrite/internal/caching"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/caching"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/roomserver/storage/shared"
 	"github.com/element-hq/dendrite/roomserver/storage/sqlite3/deltas"
 	"github.com/element-hq/dendrite/roomserver/types"

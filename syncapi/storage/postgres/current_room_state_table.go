@@ -13,8 +13,8 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	rstypes "github.com/element-hq/dendrite/roomserver/types"
 	"github.com/element-hq/dendrite/syncapi/storage/postgres/deltas"
 	"github.com/element-hq/dendrite/syncapi/storage/tables"
@@ -173,7 +173,7 @@ func (s *currentRoomStateStatements) SelectJoinedUsers(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectJoinedUsers: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectJoinedUsers: rows.close() failed")
 
 	result := make(map[string][]string)
 	var roomID string
@@ -197,7 +197,7 @@ func (s *currentRoomStateStatements) SelectJoinedUsersInRoom(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectJoinedUsers: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectJoinedUsers: rows.close() failed")
 
 	result := make(map[string][]string)
 	var userID, roomID string
@@ -224,7 +224,7 @@ func (s *currentRoomStateStatements) SelectRoomIDsWithMembership(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectRoomIDsWithMembership: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectRoomIDsWithMembership: rows.close() failed")
 
 	var result []string
 	for rows.Next() {
@@ -248,7 +248,7 @@ func (s *currentRoomStateStatements) SelectRoomIDsWithAnyMembership(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectRoomIDsWithAnyMembership: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectRoomIDsWithAnyMembership: rows.close() failed")
 
 	result := map[string]string{}
 	for rows.Next() {
@@ -290,7 +290,7 @@ func (s *currentRoomStateStatements) SelectCurrentState(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectCurrentState: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectCurrentState: rows.close() failed")
 
 	return rowsToEvents(rows)
 }
@@ -354,7 +354,7 @@ func (s *currentRoomStateStatements) SelectEventsWithEventIDs(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectEventsWithEventIDs: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectEventsWithEventIDs: rows.close() failed")
 	return currentRoomStateRowsToStreamEvents(rows)
 }
 
@@ -432,7 +432,7 @@ func (s *currentRoomStateStatements) SelectSharedUsers(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectSharedUsersStmt: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectSharedUsersStmt: rows.close() failed")
 
 	var stateKey string
 	result := make([]string, 0, len(otherUserIDs))
@@ -451,7 +451,7 @@ func (s *currentRoomStateStatements) SelectRoomHeroes(ctx context.Context, txn *
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectRoomHeroesStmt: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectRoomHeroesStmt: rows.close() failed")
 
 	var stateKey string
 	result := make([]string, 0, 5)

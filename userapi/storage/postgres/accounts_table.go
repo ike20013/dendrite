@@ -13,7 +13,7 @@ import (
 	"time"
 
 	"github.com/element-hq/dendrite/clientapi/userutil"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/userapi/api"
 	"github.com/element-hq/dendrite/userapi/storage/postgres/deltas"
 	"github.com/element-hq/dendrite/userapi/storage/tables"

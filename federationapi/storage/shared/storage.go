@@ -12,11 +12,12 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/element-hq/dendrite/external/caching"
+	"github.com/element-hq/dendrite/external/sqlutil"
+	"github.com/element-hq/dendrit
 	"github.com/element-hq/dendrite/federationapi/storage/shared/receipt"
 	"github.com/element-hq/dendrite/federationapi/storage/tables"
-	"github.com/element-hq/dendrite/federationapi/types"
-	"github.com/element-hq/dendrite/internal/caching"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )

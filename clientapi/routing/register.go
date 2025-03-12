@@ -22,10 +22,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
 	"github.com/tidwall/gjson"
 
-	"github.com/element-hq/dendrite/internal/eventutil"
+	"github.com/element-hq/dendrite/external/eventutil"
 	"github.com/element-hq/dendrite/setup/config"
 
 	"github.com/matrix-org/gomatrixserverlib"
@@ -445,8 +445,8 @@ func validateApplicationService(
 	}
 
 	// Check username application service is trying to register is valid
-	if err := internal.ValidateApplicationServiceUsername(username, cfg.Matrix.ServerName); err != nil {
-		return "", internal.UsernameResponse(err)
+	if err := external.ValidateApplicationServiceUsername(username, cfg.Matrix.ServerName); err != nil {
+		return "", external.UsernameResponse(err)
 	}
 
 	// No errors, registration valid
@@ -538,8 +538,8 @@ func Register(
 	case r.Type == authtypes.LoginTypeApplicationService && accessTokenErr == nil:
 		// Spec-compliant case (the access_token is specified and the login type
 		// is correctly set, so it's an appservice registration)
-		if err = internal.ValidateApplicationServiceUsername(r.Username, r.ServerName); err != nil {
-			return *internal.UsernameResponse(err)
+		if err = external.ValidateApplicationServiceUsername(r.Username, r.ServerName); err != nil {
+			return *external.UsernameResponse(err)
 		}
 	case accessTokenErr == nil:
 		// Non-spec-compliant case (the access_token is specified but the login
@@ -551,12 +551,12 @@ func Register(
 	default:
 		// Spec-compliant case (neither the access_token nor the login type are
 		// specified, so it's a normal user registration)
-		if err = internal.ValidateUsername(r.Username, r.ServerName); err != nil {
-			return *internal.UsernameResponse(err)
+		if err = external.ValidateUsername(r.Username, r.ServerName); err != nil {
+			return *external.UsernameResponse(err)
 		}
 	}
-	if err = internal.ValidatePassword(r.Password); err != nil {
-		return *internal.PasswordResponse(err)
+	if err = external.ValidatePassword(r.Password); err != nil {
+		return *external.PasswordResponse(err)
 	}
 
 	logger := util.GetLogger(req.Context())
@@ -775,7 +775,7 @@ func handleApplicationServiceRegistration(
 
 	// Check application service register user request is valid.
 	// The application service's ID is returned if so.
-	appserviceID, err := internal.ValidateApplicationServiceRequest(
+	appserviceID, err := external.ValidateApplicationServiceRequest(
 		cfg, r.Username, accessToken,
 	)
 	if err != nil {
@@ -1019,8 +1019,8 @@ func RegisterAvailable(
 		}
 	}
 
-	if err := internal.ValidateUsername(username, domain); err != nil {
-		return *internal.UsernameResponse(err)
+	if err := external.ValidateUsername(username, domain); err != nil {
+		return *external.UsernameResponse(err)
 	}
 
 	// Check if this username is reserved by an application service
@@ -1082,11 +1082,11 @@ func handleSharedSecretRegistration(cfg *config.ClientAPI, userAPI userapi.Clien
 	// downcase capitals
 	ssrr.User = strings.ToLower(ssrr.User)
 
-	if err = internal.ValidateUsername(ssrr.User, cfg.Matrix.ServerName); err != nil {
-		return *internal.UsernameResponse(err)
+	if err = external.ValidateUsername(ssrr.User, cfg.Matrix.ServerName); err != nil {
+		return *external.UsernameResponse(err)
 	}
-	if err = internal.ValidatePassword(ssrr.Password); err != nil {
-		return *internal.PasswordResponse(err)
+	if err = external.ValidatePassword(ssrr.Password); err != nil {
+		return *external.PasswordResponse(err)
 	}
 	deviceID := "shared_secret_registration"
 

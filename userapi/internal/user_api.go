@@ -17,8 +17,8 @@ import (
 
 	appserviceAPI "github.com/element-hq/dendrite/appservice/api"
 	"github.com/element-hq/dendrite/clientapi/auth/authtypes"
+	"github.com/element-hq/dendrite/external/pushrules"
 	fedsenderapi "github.com/element-hq/dendrite/federationapi/api"
-	"github.com/element-hq/dendrite/internal/pushrules"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/matrix-org/util"
@@ -27,9 +27,9 @@ import (
 
 	clientapi "github.com/element-hq/dendrite/clientapi/api"
 	"github.com/element-hq/dendrite/clientapi/userutil"
-	"github.com/element-hq/dendrite/internal/eventutil"
-	"github.com/element-hq/dendrite/internal/pushgateway"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/eventutil"
+	"github.com/element-hq/dendrite/external/pushgateway"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	rsapi "github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/setup/config"
 	synctypes "github.com/element-hq/dendrite/syncapi/types"

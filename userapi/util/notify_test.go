@@ -8,14 +8,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/syncapi/synctypes"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/matrix-org/util"
 	"golang.org/x/crypto/bcrypt"
 
-	"github.com/element-hq/dendrite/internal/pushgateway"
+	"github.com/element-hq/dendrite/external/pushgateway"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/element-hq/dendrite/test"
 	"github.com/element-hq/dendrite/userapi/api"

@@ -11,8 +11,8 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/userapi/storage/postgres/deltas"
 	"github.com/element-hq/dendrite/userapi/storage/tables"
 	"github.com/element-hq/dendrite/userapi/types"
@@ -84,7 +84,7 @@ func (s *crossSigningSigsStatements) SelectCrossSigningSigsForTarget(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectCrossSigningSigsForTargetStmt: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectCrossSigningSigsForTargetStmt: rows.close() failed")
 	r = types.CrossSigningSigMap{}
 	for rows.Next() {
 		var userID string

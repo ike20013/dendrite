@@ -14,8 +14,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/userapi/api"
 	"github.com/element-hq/dendrite/userapi/storage/tables"
 	"github.com/matrix-org/gomatrixserverlib/spec"
@@ -153,7 +153,7 @@ func (s *notificationsStatements) Select(ctx context.Context, txn *sql.Tx, local
 	if err != nil {
 		return nil, 0, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "notifications.Select: rows.Close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "notifications.Select: rows.Close() failed")
 
 	var maxID int64 = -1
 	var notifs []*api.Notification

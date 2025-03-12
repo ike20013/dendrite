@@ -163,7 +163,7 @@ func Test_ApplyHistoryVisbility_Boundaries(t *testing.T) {
 		events[i] = &types.HeaderedEvent{PDU: pdu}
 
 		// 'Visibility' should be the visibility of the room just before this event was sent
-		// (according to processRoomEvent in roomserver/internal/input/input_events.go)
+		// (according to processRoomEvent in roomserver/external/input/input_events.go)
 		events[i].Visibility = hisVis
 		if pdu.Type() == spec.MRoomHistoryVisibility {
 			newHisVis, err := pdu.HistoryVisibility()

@@ -115,7 +115,7 @@ global:
   # Configuration for NATS JetStream
   jetstream:
     # A list of NATS Server addresses to connect to. If none are specified, an
-    # internal NATS server will be started automatically when running Dendrite in
+    # external NATS server will be started automatically when running Dendrite in
     # monolith mode.
     addresses:
     # - localhost:4222

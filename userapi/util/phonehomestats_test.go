@@ -7,10 +7,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"golang.org/x/crypto/bcrypt"
 
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
 	"github.com/element-hq/dendrite/test"
 	"github.com/element-hq/dendrite/test/testrig"
 	"github.com/element-hq/dendrite/userapi/storage"
@@ -47,8 +47,8 @@ func TestCollect(t *testing.T) {
 			if !ok {
 				t.Errorf("missing version in JSON request: %+v", data)
 			}
-			if version != internal.VersionString() {
-				t.Errorf("unexpected version: %q, expected %q", version, internal.VersionString())
+			if version != external.VersionString() {
+				t.Errorf("unexpected version: %q, expected %q", version, external.VersionString())
 			}
 			switch {
 			case dbType == test.DBTypeSQLite && dbEngine != "SQLite":

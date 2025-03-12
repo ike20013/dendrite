@@ -15,7 +15,7 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
 )
 
 const createDBMigrationsSQL = "" +
@@ -120,7 +120,7 @@ func (m *Migrator) insertMigration(ctx context.Context, txn *sql.Tx, migrationNa
 	_, err := stmt.ExecContext(ctx,
 		migrationName,
 		time.Now().Format(time.RFC3339),
-		internal.VersionString(),
+		external.VersionString(),
 	)
 	return err
 }
@@ -137,7 +137,7 @@ func (m *Migrator) ExecutedMigrations(ctx context.Context) (map[string]struct{},
 	if err != nil {
 		return nil, fmt.Errorf("unable to query db_migrations: %w", err)
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "ExecutedMigrations: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "ExecutedMigrations: rows.close() failed")
 	var version string
 	for rows.Next() {
 		if err = rows.Scan(&version); err != nil {
@@ -167,6 +167,6 @@ func InsertMigration(ctx context.Context, db *sql.DB, migrationName string) erro
 
 func (m *Migrator) close() {
 	if m.insertStmt != nil {
-		internal.CloseAndLogIfError(context.Background(), m.insertStmt, "unable to close insert statement")
+		external.CloseAndLogIfError(context.Background(), m.insertStmt, "unable to close insert statement")
 	}
 }

@@ -10,7 +10,7 @@ type JetStream struct {
 	// Persistent directory to store JetStream streams in.
 	StoragePath Path `yaml:"storage_path"`
 	// A list of NATS addresses to connect to. If none are specified, an
-	// internal NATS server will be used when running in monolith mode only.
+	// external NATS server will be used when running in monolith mode only.
 	Addresses []string `yaml:"addresses"`
 	// The prefix to use for stream names for this homeserver - really only
 	// useful if running more than one Dendrite on the same NATS deployment.

@@ -10,8 +10,8 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/syncapi/storage/tables"
 	"github.com/element-hq/dendrite/syncapi/types"
 )
@@ -121,7 +121,7 @@ func (s *relationsStatements) SelectRelationsInRange(
 	if err != nil {
 		return nil, lastPos, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectRelationsInRange: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectRelationsInRange: rows.close() failed")
 	result := map[string][]types.RelationEntry{}
 	var (
 		id           types.StreamPosition

@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/element-hq/dendrite/internal/pushgateway"
+	"github.com/element-hq/dendrite/external/pushgateway"
 	"github.com/element-hq/dendrite/userapi/api"
 	"github.com/element-hq/dendrite/userapi/storage"
 	"github.com/matrix-org/gomatrixserverlib/spec"

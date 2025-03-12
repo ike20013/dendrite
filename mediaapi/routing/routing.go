@@ -11,8 +11,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/element-hq/dendrite/federationapi/routing"
-	"github.com/element-hq/dendrite/internal/httputil"
+	"github.com/element-hq/dendrite/external/httputil"
+	"github.com/element-hq/dendrite/federationapi/rou
 	"github.com/element-hq/dendrite/mediaapi/storage"
 	"github.com/element-hq/dendrite/mediaapi/types"
 	"github.com/element-hq/dendrite/setup/config"
@@ -189,7 +189,7 @@ func makeDownloadAPI(
 	httpHandler := func(w http.ResponseWriter, req *http.Request) {
 		req = util.RequestWithLogging(req)
 
-		// Set internal headers returned regardless of the outcome of the request
+		// Set external headers returned regardless of the outcome of the request
 		util.SetCORSHeaders(w)
 		w.Header().Set("Cross-Origin-Resource-Policy", "cross-origin")
 		// Content-Type will be overridden in case of returning file data, else we respond with JSON-formatted errors

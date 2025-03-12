@@ -14,7 +14,7 @@ import (
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/matrix-org/util"
 
-	"github.com/element-hq/dendrite/internal/fulltext"
+	"github.com/element-hq/dendrite/external/fulltext"
 	"github.com/element-hq/dendrite/setup/config"
 )
 

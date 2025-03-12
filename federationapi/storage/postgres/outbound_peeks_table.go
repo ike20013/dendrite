@@ -11,9 +11,9 @@ import (
 	"database/sql"
 	"time"
 
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/federationapi/types"
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )
 
@@ -122,7 +122,7 @@ func (s *outboundPeeksStatements) SelectOutboundPeeks(
 	if err != nil {
 		return
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "SelectOutboundPeeks: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "SelectOutboundPeeks: rows.close() failed")
 
 	for rows.Next() {
 		outboundPeek := types.OutboundPeek{}

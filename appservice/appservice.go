@@ -23,7 +23,7 @@ import (
 	userapi "github.com/element-hq/dendrite/userapi/api"
 )
 
-// NewInternalAPI returns a concerete implementation of the internal API. Callers
+// NewInternalAPI returns a concerete implementation of the external API. Callers
 // can call functions directly on the returned API or via an HTTP interface using AddInternalRoutes.
 func NewInternalAPI(
 	processContext *process.ProcessContext,
@@ -34,7 +34,7 @@ func NewInternalAPI(
 ) appserviceAPI.AppServiceInternalAPI {
 
 	// Create appserivce query API with an HTTP client that will be used for all
-	// outbound and inbound requests (inbound only for the internal API)
+	// outbound and inbound requests (inbound only for the external API)
 	appserviceQueryAPI := &query.AppServiceQueryAPI{
 		Cfg:           &cfg.AppServiceAPI,
 		ProtocolCache: map[string]appserviceAPI.ASProtocolResponse{},

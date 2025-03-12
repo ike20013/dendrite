@@ -11,9 +11,9 @@ import (
 	"context"
 	"database/sql"
 
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/federationapi/types"
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
 	"github.com/lib/pq"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 )
@@ -140,7 +140,7 @@ func (s *joinedHostsStatements) SelectAllJoinedHosts(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectAllJoinedHosts: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectAllJoinedHosts: rows.close() failed")
 
 	var result []spec.ServerName
 	for rows.Next() {
@@ -165,7 +165,7 @@ func (s *joinedHostsStatements) SelectJoinedHostsForRooms(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectJoinedHostsForRoomsStmt: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectJoinedHostsForRoomsStmt: rows.close() failed")
 
 	var result []spec.ServerName
 	for rows.Next() {
@@ -186,7 +186,7 @@ func joinedHostsFromStmt(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "joinedHostsFromStmt: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "joinedHostsFromStmt: rows.close() failed")
 
 	var result []types.JoinedHost
 	for rows.Next() {

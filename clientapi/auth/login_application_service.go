@@ -11,7 +11,7 @@ import (
 
 	"github.com/element-hq/dendrite/clientapi/auth/authtypes"
 	"github.com/element-hq/dendrite/clientapi/httputil"
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/matrix-org/util"
 )
@@ -37,7 +37,7 @@ func (t *LoginTypeApplicationService) LoginFromJSON(
 		return nil, nil, err
 	}
 
-	_, err := internal.ValidateApplicationServiceRequest(t.Config, r.Identifier.User, t.Token)
+	_, err := external.ValidateApplicationServiceRequest(t.Config, r.Identifier.User, t.Token)
 	if err != nil {
 		return nil, nil, err
 	}

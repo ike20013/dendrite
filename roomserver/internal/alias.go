@@ -14,7 +14,7 @@ import (
 	"time"
 
 	asAPI "github.com/element-hq/dendrite/appservice/api"
-	"github.com/element-hq/dendrite/internal/eventutil"
+	"github.com/element-hq/dendrite/external/eventutil"
 	"github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/roomserver/internal/helpers"
 	"github.com/element-hq/dendrite/roomserver/types"

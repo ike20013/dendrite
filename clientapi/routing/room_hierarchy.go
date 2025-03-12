@@ -144,7 +144,7 @@ func QueryRoomHierarchy(req *http.Request, device *userapi.Device, roomIDStr str
 			log.WithError(err).Errorf("failed to fetch next page of room hierarchy (CS API)")
 			return util.JSONResponse{
 				Code: http.StatusInternalServerError,
-				JSON: spec.Unknown("internal server error"),
+				JSON: spec.Unknown("external server error"),
 			}
 		}
 	}

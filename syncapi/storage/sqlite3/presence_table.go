@@ -14,8 +14,8 @@ import (
 
 	"github.com/matrix-org/gomatrixserverlib/spec"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/syncapi/synctypes"
 	"github.com/element-hq/dendrite/syncapi/types"
 )
@@ -140,7 +140,7 @@ func (p *presenceStatements) GetPresenceForUsers(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, prepStmt, "GetPresenceForUsers: stmt.close() failed")
+	defer external.CloseAndLogIfError(ctx, prepStmt, "GetPresenceForUsers: stmt.close() failed")
 
 	params := make([]interface{}, len(userIDs))
 	for i := range userIDs {
@@ -151,7 +151,7 @@ func (p *presenceStatements) GetPresenceForUsers(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "GetPresenceForUsers: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "GetPresenceForUsers: rows.close() failed")
 	result := make([]*types.PresenceInternal, 0, len(userIDs))
 	for rows.Next() {
 		presence := &types.PresenceInternal{}
@@ -182,7 +182,7 @@ func (p *presenceStatements) GetPresenceAfter(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "GetPresenceAfter: failed to close rows")
+	defer external.CloseAndLogIfError(ctx, rows, "GetPresenceAfter: failed to close rows")
 	for rows.Next() {
 		qryRes := &types.PresenceInternal{}
 		if err := rows.Scan(&qryRes.StreamPos, &qryRes.UserID, &qryRes.Presence, &qryRes.ClientFields.StatusMsg, &qryRes.LastActiveTS); err != nil {

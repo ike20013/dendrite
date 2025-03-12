@@ -185,7 +185,7 @@ func SetLocalAlias(
 	if err != nil {
 		return util.JSONResponse{
 			Code: http.StatusInternalServerError,
-			JSON: spec.Unknown("internal server error"),
+			JSON: spec.Unknown("external server error"),
 		}
 	}
 
@@ -194,13 +194,13 @@ func SetLocalAlias(
 		util.GetLogger(req.Context()).WithError(err).Error("QuerySenderIDForUser failed")
 		return util.JSONResponse{
 			Code: http.StatusInternalServerError,
-			JSON: spec.Unknown("internal server error"),
+			JSON: spec.Unknown("external server error"),
 		}
 	} else if senderID == nil {
 		util.GetLogger(req.Context()).WithField("roomID", *roomID).WithField("userID", *userID).Error("Sender ID not found")
 		return util.JSONResponse{
 			Code: http.StatusInternalServerError,
-			JSON: spec.Unknown("internal server error"),
+			JSON: spec.Unknown("external server error"),
 		}
 	}
 
@@ -273,7 +273,7 @@ func RemoveLocalAlias(
 		util.GetLogger(req.Context()).WithError(err).Error("roomserverAPI.QueryMembershipForUser failed")
 		return util.JSONResponse{
 			Code: http.StatusInternalServerError,
-			JSON: spec.Unknown("internal server error"),
+			JSON: spec.Unknown("external server error"),
 		}
 	}
 	if !queryResp.IsInRoom {
@@ -294,7 +294,7 @@ func RemoveLocalAlias(
 	if deviceSenderID == nil {
 		return util.JSONResponse{
 			Code: http.StatusInternalServerError,
-			JSON: spec.Unknown("internal server error"),
+			JSON: spec.Unknown("external server error"),
 		}
 	}
 
@@ -303,7 +303,7 @@ func RemoveLocalAlias(
 		util.GetLogger(req.Context()).WithError(err).Error("aliasAPI.RemoveRoomAlias failed")
 		return util.JSONResponse{
 			Code: http.StatusInternalServerError,
-			JSON: spec.Unknown("internal server error"),
+			JSON: spec.Unknown("external server error"),
 		}
 	}
 

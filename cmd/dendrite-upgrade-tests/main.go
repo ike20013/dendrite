@@ -36,7 +36,7 @@ var (
 	flagTo               = flag.String("to", "HEAD", "The version to end on e.g '0.3.3'.")
 	flagBuildConcurrency = flag.Int("build-concurrency", runtime.NumCPU(), "The amount of build concurrency when building images")
 	flagHead             = flag.String("head", "", "Location to a dendrite repository to treat as HEAD instead of Github")
-	flagDockerHost       = flag.String("docker-host", "localhost", "The hostname of the docker client. 'localhost' if running locally, 'host.docker.internal' if running in Docker.")
+	flagDockerHost       = flag.String("docker-host", "localhost", "The hostname of the docker client. 'localhost' if running locally, 'host.docker.external' if running in Docker.")
 	flagDirect           = flag.Bool("direct", false, "If a direct upgrade from the defined FROM version to TO should be done")
 	flagSqlite           = flag.Bool("sqlite", false, "Test SQLite instead of PostgreSQL")
 	flagRepository       = flag.String("repository", "element-hq/dendrite", "The base repository to use when running upgrade tests.")

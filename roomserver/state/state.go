@@ -20,7 +20,7 @@ import (
 	"github.com/matrix-org/util"
 	"github.com/prometheus/client_golang/prometheus"
 
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
 	"github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/roomserver/types"
 )
@@ -106,7 +106,7 @@ func (p *StateResolution) Resolve(ctx context.Context, eventID string) (*gomatri
 func (v *StateResolution) LoadStateAtSnapshot(
 	ctx context.Context, stateNID types.StateSnapshotNID,
 ) ([]types.StateEntry, error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.LoadStateAtSnapshot")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.LoadStateAtSnapshot")
 	defer trace.EndRegion()
 
 	stateBlockNIDLists, err := v.db.StateBlockNIDs(ctx, []types.StateSnapshotNID{stateNID})
@@ -147,7 +147,7 @@ func (v *StateResolution) LoadStateAtSnapshot(
 func (v *StateResolution) LoadStateAtEvent(
 	ctx context.Context, eventID string,
 ) ([]types.StateEntry, error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.LoadStateAtEvent")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.LoadStateAtEvent")
 	defer trace.EndRegion()
 
 	snapshotNID, err := v.db.SnapshotNIDFromEventID(ctx, eventID)
@@ -169,7 +169,7 @@ func (v *StateResolution) LoadStateAtEvent(
 func (v *StateResolution) LoadMembershipAtEvent(
 	ctx context.Context, eventIDs []string, stateKeyNID types.EventStateKeyNID,
 ) (map[string][]types.StateEntry, error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.LoadMembershipAtEvent")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.LoadMembershipAtEvent")
 	defer trace.EndRegion()
 
 	// Get a mapping from snapshotNID -> eventIDs
@@ -238,7 +238,7 @@ func (v *StateResolution) LoadMembershipAtEvent(
 func (v *StateResolution) LoadStateAtEventForHistoryVisibility(
 	ctx context.Context, eventID string,
 ) ([]types.StateEntry, error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.LoadStateAtEventForHistoryVisibility")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.LoadStateAtEventForHistoryVisibility")
 	defer trace.EndRegion()
 
 	snapshotNID, err := v.db.SnapshotNIDFromEventID(ctx, eventID)
@@ -263,7 +263,7 @@ func (v *StateResolution) LoadStateAtEventForHistoryVisibility(
 func (v *StateResolution) LoadCombinedStateAfterEvents(
 	ctx context.Context, prevStates []types.StateAtEvent,
 ) ([]types.StateEntry, error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.LoadCombinedStateAfterEvents")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.LoadCombinedStateAfterEvents")
 	defer trace.EndRegion()
 
 	stateNIDs := make([]types.StateSnapshotNID, len(prevStates))
@@ -338,7 +338,7 @@ func (v *StateResolution) LoadCombinedStateAfterEvents(
 func (v *StateResolution) DifferenceBetweeenStateSnapshots(
 	ctx context.Context, oldStateNID, newStateNID types.StateSnapshotNID,
 ) (removed, added []types.StateEntry, err error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.DifferenceBetweeenStateSnapshots")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.DifferenceBetweeenStateSnapshots")
 	defer trace.EndRegion()
 
 	if oldStateNID == newStateNID {
@@ -402,7 +402,7 @@ func (v *StateResolution) LoadStateAtSnapshotForStringTuples(
 	stateNID types.StateSnapshotNID,
 	stateKeyTuples []gomatrixserverlib.StateKeyTuple,
 ) ([]types.StateEntry, error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.LoadStateAtSnapshotForStringTuples")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.LoadStateAtSnapshotForStringTuples")
 	defer trace.EndRegion()
 
 	numericTuples, err := v.stringTuplesToNumericTuples(ctx, stateKeyTuples)
@@ -419,7 +419,7 @@ func (v *StateResolution) stringTuplesToNumericTuples(
 	ctx context.Context,
 	stringTuples []gomatrixserverlib.StateKeyTuple,
 ) ([]types.StateKeyTuple, error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.stringTuplesToNumericTuples")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.stringTuplesToNumericTuples")
 	defer trace.EndRegion()
 
 	eventTypes := make([]string, len(stringTuples))
@@ -464,7 +464,7 @@ func (v *StateResolution) loadStateAtSnapshotForNumericTuples(
 	stateNID types.StateSnapshotNID,
 	stateKeyTuples []types.StateKeyTuple,
 ) ([]types.StateEntry, error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.loadStateAtSnapshotForNumericTuples")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.loadStateAtSnapshotForNumericTuples")
 	defer trace.EndRegion()
 
 	stateBlockNIDLists, err := v.db.StateBlockNIDs(ctx, []types.StateSnapshotNID{stateNID})
@@ -515,7 +515,7 @@ func (v *StateResolution) LoadStateAfterEventsForStringTuples(
 	prevStates []types.StateAtEvent,
 	stateKeyTuples []gomatrixserverlib.StateKeyTuple,
 ) ([]types.StateEntry, error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.LoadStateAfterEventsForStringTuples")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.LoadStateAfterEventsForStringTuples")
 	defer trace.EndRegion()
 
 	numericTuples, err := v.stringTuplesToNumericTuples(ctx, stateKeyTuples)
@@ -530,7 +530,7 @@ func (v *StateResolution) loadStateAfterEventsForNumericTuples(
 	prevStates []types.StateAtEvent,
 	stateKeyTuples []types.StateKeyTuple,
 ) ([]types.StateEntry, error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.loadStateAfterEventsForNumericTuples")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.loadStateAfterEventsForNumericTuples")
 	defer trace.EndRegion()
 
 	if len(prevStates) == 1 {
@@ -705,7 +705,7 @@ func (v *StateResolution) CalculateAndStoreStateBeforeEvent(
 	event gomatrixserverlib.PDU,
 	isRejected bool,
 ) (types.StateSnapshotNID, error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.CalculateAndStoreStateBeforeEvent")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.CalculateAndStoreStateBeforeEvent")
 	defer trace.EndRegion()
 
 	// Load the state at the prev events.
@@ -724,7 +724,7 @@ func (v *StateResolution) CalculateAndStoreStateAfterEvents(
 	ctx context.Context,
 	prevStates []types.StateAtEvent,
 ) (types.StateSnapshotNID, error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.CalculateAndStoreStateAfterEvents")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.CalculateAndStoreStateAfterEvents")
 	defer trace.EndRegion()
 
 	metrics := calculateStateMetrics{startTime: time.Now(), prevEventLength: len(prevStates)}
@@ -746,7 +746,7 @@ func (v *StateResolution) CalculateAndStoreStateAfterEvents(
 			// 3) None of the previous events were state events and they all
 			// have the same state, so this event has exactly the same state
 			// as the previous events.
-			// This should be the internal case.
+			// This should be the external case.
 			metrics.algorithm = "no_change"
 			return metrics.stop(prevState.BeforeStateSnapshotNID, nil)
 		}
@@ -799,7 +799,7 @@ func (v *StateResolution) calculateAndStoreStateAfterManyEvents(
 	prevStates []types.StateAtEvent,
 	metrics calculateStateMetrics,
 ) (types.StateSnapshotNID, error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.calculateAndStoreStateAfterManyEvents")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.calculateAndStoreStateAfterManyEvents")
 	defer trace.EndRegion()
 
 	state, algorithm, conflictLength, err :=
@@ -820,7 +820,7 @@ func (v *StateResolution) calculateStateAfterManyEvents(
 	ctx context.Context, roomVersion gomatrixserverlib.RoomVersion,
 	prevStates []types.StateAtEvent,
 ) (state []types.StateEntry, algorithm string, conflictLength int, err error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.calculateStateAfterManyEvents")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.calculateStateAfterManyEvents")
 	defer trace.EndRegion()
 
 	var combined []types.StateEntry
@@ -875,7 +875,7 @@ func (v *StateResolution) resolveConflicts(
 	ctx context.Context, version gomatrixserverlib.RoomVersion,
 	notConflicted, conflicted []types.StateEntry,
 ) ([]types.StateEntry, error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.resolveConflicts")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.resolveConflicts")
 	defer trace.EndRegion()
 
 	verImpl, err := gomatrixserverlib.GetRoomVersion(version)
@@ -904,7 +904,7 @@ func (v *StateResolution) resolveConflictsV1(
 	ctx context.Context,
 	notConflicted, conflicted []types.StateEntry,
 ) ([]types.StateEntry, error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.resolveConflictsV1")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.resolveConflictsV1")
 	defer trace.EndRegion()
 
 	// Load the conflicted events
@@ -971,7 +971,7 @@ func (v *StateResolution) resolveConflictsV2(
 	ctx context.Context,
 	notConflicted, conflicted []types.StateEntry,
 ) ([]types.StateEntry, error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.resolveConflictsV2")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.resolveConflictsV2")
 	defer trace.EndRegion()
 
 	estimate := len(conflicted) + len(notConflicted)
@@ -1004,7 +1004,7 @@ func (v *StateResolution) resolveConflictsV2(
 
 	// For each conflicted event, let's try and get the needed auth events.
 	if err = func() error {
-		loadAuthEventsTrace, sctx := internal.StartRegion(ctx, "StateResolution.loadAuthEvents")
+		loadAuthEventsTrace, sctx := external.StartRegion(ctx, "StateResolution.loadAuthEvents")
 		defer loadAuthEventsTrace.EndRegion()
 
 		loader := authEventLoader{
@@ -1049,7 +1049,7 @@ func (v *StateResolution) resolveConflictsV2(
 
 	// Resolve the conflicts.
 	resolvedEvents := func() []gomatrixserverlib.PDU {
-		resolvedTrace, _ := internal.StartRegion(ctx, "StateResolution.ResolveStateConflictsV2")
+		resolvedTrace, _ := external.StartRegion(ctx, "StateResolution.ResolveStateConflictsV2")
 		defer resolvedTrace.EndRegion()
 
 		return gomatrixserverlib.ResolveStateConflictsV2(
@@ -1132,7 +1132,7 @@ func (v *StateResolution) stateKeyTuplesNeeded(stateKeyNIDMap map[string]types.E
 func (v *StateResolution) loadStateEvents(
 	ctx context.Context, entries []types.StateEntry,
 ) ([]gomatrixserverlib.PDU, map[string]types.StateEntry, error) {
-	trace, ctx := internal.StartRegion(ctx, "StateResolution.loadStateEvents")
+	trace, ctx := external.StartRegion(ctx, "StateResolution.loadStateEvents")
 	defer trace.EndRegion()
 
 	result := make([]gomatrixserverlib.PDU, 0, len(entries))

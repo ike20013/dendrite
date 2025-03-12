@@ -11,8 +11,8 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/userapi/storage/tables"
 	"github.com/element-hq/dendrite/userapi/types"
 	"github.com/matrix-org/gomatrixserverlib/fclient"
@@ -63,7 +63,7 @@ func (s *crossSigningKeysStatements) SelectCrossSigningKeysForUser(
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectCrossSigningKeysForUserStmt: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectCrossSigningKeysForUserStmt: rows.close() failed")
 	r = types.CrossSigningKeyMap{}
 	for rows.Next() {
 		var keyTypeInt int16

@@ -12,8 +12,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/userapi/storage/postgres/deltas"
 	"github.com/element-hq/dendrite/userapi/storage/tables"
 )
@@ -103,7 +103,7 @@ func (s *keyChangesStatements) SelectKeyChanges(
 	if err != nil {
 		return nil, 0, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectKeyChangesStmt: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectKeyChangesStmt: rows.close() failed")
 	for rows.Next() {
 		var userID string
 		var offset int64

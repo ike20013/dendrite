@@ -7,7 +7,7 @@
 package clientapi
 
 import (
-	"github.com/element-hq/dendrite/internal/httputil"
+	"github.com/element-hq/dendrite/external/httputil"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/element-hq/dendrite/setup/process"
 	userapi "github.com/element-hq/dendrite/userapi/api"
@@ -17,8 +17,8 @@ import (
 	"github.com/element-hq/dendrite/clientapi/api"
 	"github.com/element-hq/dendrite/clientapi/producers"
 	"github.com/element-hq/dendrite/clientapi/routing"
+	"github.com/element-hq/dendrite/external/transactions"
 	federationAPI "github.com/element-hq/dendrite/federationapi/api"
-	"github.com/element-hq/dendrite/internal/transactions"
 	roomserverAPI "github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/setup/jetstream"
 )

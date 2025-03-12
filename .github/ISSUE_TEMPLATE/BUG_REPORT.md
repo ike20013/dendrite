@@ -33,7 +33,7 @@ see: https://www.matrix.org/security-disclosure-policy/
 Examples of good descriptions:
 - What: "I cannot log in, getting HTTP 500 responses"
 - Who: "Clients on my server"
-- How: "Errors in the logs saying 500 internal server error"
+- How: "Errors in the logs saying 500 external server error"
 - When: "After upgrading to 0.3.0"
 
 - What: "Dendrite ran out of memory"

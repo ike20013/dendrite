@@ -222,7 +222,7 @@ func OnIncomingStateTypeRequest(
 			util.GetLogger(ctx).WithError(err).Error("synctypes.FromClientStateKey failed")
 			return util.JSONResponse{
 				Code: http.StatusInternalServerError,
-				JSON: spec.Unknown("internal server error"),
+				JSON: spec.Unknown("external server error"),
 			}
 		}
 		stateKey = *newStateKey

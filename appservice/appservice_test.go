@@ -16,8 +16,8 @@ import (
 
 	"github.com/element-hq/dendrite/clientapi"
 	"github.com/element-hq/dendrite/clientapi/auth/authtypes"
+	"github.com/element-hq/dendrite/external/httputil"
 	"github.com/element-hq/dendrite/federationapi/statistics"
-	"github.com/element-hq/dendrite/internal/httputil"
 	"github.com/element-hq/dendrite/roomserver/types"
 	"github.com/element-hq/dendrite/syncapi"
 	uapi "github.com/element-hq/dendrite/userapi/api"
@@ -30,8 +30,8 @@ import (
 	"github.com/element-hq/dendrite/appservice"
 	"github.com/element-hq/dendrite/appservice/api"
 	"github.com/element-hq/dendrite/appservice/consumers"
-	"github.com/element-hq/dendrite/internal/caching"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/caching"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/roomserver"
 	rsapi "github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/setup/config"
@@ -154,7 +154,7 @@ func TestAppserviceInternalAPI(t *testing.T) {
 			ctx.WaitForShutdown()
 		})
 		caches := caching.NewRistrettoCache(128*1024*1024, time.Hour, caching.DisableMetrics)
-		// Create required internal APIs
+		// Create required external APIs
 		natsInstance := jetstream.NATSInstance{}
 		cm := sqlutil.NewConnectionManager(ctx, cfg.Global.DatabaseOptions)
 		rsAPI := roomserver.NewInternalAPI(ctx, cfg, cm, &natsInstance, caches, caching.DisableMetrics)
@@ -249,7 +249,7 @@ func TestAppserviceInternalAPI_UnixSocket_Simple(t *testing.T) {
 		ctx.WaitForShutdown()
 	})
 	caches := caching.NewRistrettoCache(128*1024*1024, time.Hour, caching.DisableMetrics)
-	// Create required internal APIs
+	// Create required external APIs
 	natsInstance := jetstream.NATSInstance{}
 	cm := sqlutil.NewConnectionManager(ctx, cfg.Global.DatabaseOptions)
 	rsAPI := roomserver.NewInternalAPI(ctx, cfg, cm, &natsInstance, caches, caching.DisableMetrics)
@@ -390,7 +390,7 @@ func TestRoomserverConsumerOneInvite(t *testing.T) {
 		cfg.AppServiceAPI.Derived.ApplicationServices = []config.ApplicationService{*as}
 
 		caches := caching.NewRistrettoCache(128*1024*1024, time.Hour, caching.DisableMetrics)
-		// Create required internal APIs
+		// Create required external APIs
 		rsAPI := roomserver.NewInternalAPI(processCtx, cfg, cm, natsInstance, caches, caching.DisableMetrics)
 		rsAPI.SetFederationAPI(nil, nil)
 		usrAPI := userapi.NewInternalAPI(processCtx, cfg, cm, natsInstance, rsAPI, nil, caching.DisableMetrics, testIsBlacklistedOrBackingOff)
@@ -434,7 +434,7 @@ func TestOutputAppserviceEvent(t *testing.T) {
 		evChan := make(chan struct{})
 
 		caches := caching.NewRistrettoCache(128*1024*1024, time.Hour, caching.DisableMetrics)
-		// Create required internal APIs
+		// Create required external APIs
 		rsAPI := roomserver.NewInternalAPI(processCtx, cfg, cm, natsInstance, caches, caching.DisableMetrics)
 		rsAPI.SetFederationAPI(nil, nil)
 

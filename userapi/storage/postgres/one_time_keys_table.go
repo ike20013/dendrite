@@ -12,8 +12,8 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/userapi/api"
 	"github.com/element-hq/dendrite/userapi/storage/tables"
 	"github.com/lib/pq"
@@ -91,7 +91,7 @@ func (s *oneTimeKeysStatements) SelectOneTimeKeys(ctx context.Context, userID, d
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectKeysStmt: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectKeysStmt: rows.close() failed")
 
 	result := make(map[string]json.RawMessage)
 	var (
@@ -117,7 +117,7 @@ func (s *oneTimeKeysStatements) CountOneTimeKeys(ctx context.Context, userID, de
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectKeysCountStmt: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectKeysCountStmt: rows.close() failed")
 	for rows.Next() {
 		var algorithm string
 		var count int
@@ -149,7 +149,7 @@ func (s *oneTimeKeysStatements) InsertOneTimeKeys(ctx context.Context, txn *sql.
 	if err != nil {
 		return nil, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectKeysCountStmt: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectKeysCountStmt: rows.close() failed")
 	for rows.Next() {
 		var algorithm string
 		var count int

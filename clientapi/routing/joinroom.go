@@ -13,7 +13,7 @@ import (
 
 	appserviceAPI "github.com/element-hq/dendrite/appservice/api"
 	"github.com/element-hq/dendrite/clientapi/httputil"
-	"github.com/element-hq/dendrite/internal/eventutil"
+	"github.com/element-hq/dendrite/external/eventutil"
 	roomserverAPI "github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/userapi/api"
 	"github.com/matrix-org/gomatrix"
@@ -88,7 +88,7 @@ func JoinRoomByIDOrAlias(
 		case nil: // success case
 			response = util.JSONResponse{
 				Code: http.StatusOK,
-				// TODO: Put the response struct somewhere internal.
+				// TODO: Put the response struct somewhere external.
 				JSON: struct {
 					RoomID string `json:"room_id"`
 				}{roomID},

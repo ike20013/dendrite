@@ -12,8 +12,8 @@ import (
 	"database/sql"
 	"encoding/json"
 
-	"github.com/element-hq/dendrite/internal"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	rstypes "github.com/element-hq/dendrite/roomserver/types"
 	"github.com/element-hq/dendrite/syncapi/storage/tables"
 	"github.com/element-hq/dendrite/syncapi/types"
@@ -118,7 +118,7 @@ func (s *inviteEventsStatements) SelectInviteEventsInRange(
 	if err != nil {
 		return nil, nil, lastPos, err
 	}
-	defer internal.CloseAndLogIfError(ctx, rows, "selectInviteEventsInRange: rows.close() failed")
+	defer external.CloseAndLogIfError(ctx, rows, "selectInviteEventsInRange: rows.close() failed")
 	result := map[string]*rstypes.HeaderedEvent{}
 	retired := map[string]*rstypes.HeaderedEvent{}
 	for rows.Next() {

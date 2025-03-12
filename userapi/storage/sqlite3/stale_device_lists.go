@@ -12,10 +12,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 
-	"github.com/element-hq/dendrite/internal"
+	"github.com/element-hq/dendrite/external"
 	"github.com/element-hq/dendrite/userapi/storage/tables"
 	"github.com/matrix-org/gomatrixserverlib"
 )
@@ -113,7 +113,7 @@ func (s *staleDeviceListsStatements) DeleteStaleDeviceLists(
 	if err != nil {
 		return err
 	}
-	defer internal.CloseAndLogIfError(ctx, stmt, "DeleteStaleDeviceLists: stmt.Close failed")
+	defer external.CloseAndLogIfError(ctx, stmt, "DeleteStaleDeviceLists: stmt.Close failed")
 	stmt = sqlutil.TxStmt(txn, stmt)
 
 	params := make([]any, len(userIDs))
@@ -126,7 +126,7 @@ func (s *staleDeviceListsStatements) DeleteStaleDeviceLists(
 }
 
 func rowsToUserIDs(ctx context.Context, rows *sql.Rows) (result []string, err error) {
-	defer internal.CloseAndLogIfError(ctx, rows, "closing rowsToUserIDs failed")
+	defer external.CloseAndLogIfError(ctx, rows, "closing rowsToUserIDs failed")
 	for rows.Next() {
 		var userID string
 		if err := rows.Scan(&userID); err != nil {

@@ -9,21 +9,22 @@ package federationapi
 import (
 	"time"
 
-	"github.com/element-hq/dendrite/internal/httputil"
-	"github.com/element-hq/dendrite/internal/sqlutil"
+	"github.com/element-hq/dendrite/external/httputil"
+	"github.com/element-hq/dendrite/external/sqlutil"
 	"github.com/element-hq/dendrite/setup/config"
 	"github.com/element-hq/dendrite/setup/process"
 	"github.com/matrix-org/gomatrixserverlib/fclient"
 	"github.com/sirupsen/logrus"
 
+	"github.com/element-hq/dendrite/external/caching"
+	federationAPI
 	federationAPI "github.com/element-hq/dendrite/federationapi/api"
 	"github.com/element-hq/dendrite/federationapi/consumers"
 	"github.com/element-hq/dendrite/federationapi/internal"
 	"github.com/element-hq/dendrite/federationapi/producers"
 	"github.com/element-hq/dendrite/federationapi/queue"
 	"github.com/element-hq/dendrite/federationapi/statistics"
-	"github.com/element-hq/dendrite/federationapi/storage"
-	"github.com/element-hq/dendrite/internal/caching"
+	"github.com/element-hq/dendrite/external/caching"
 	roomserverAPI "github.com/element-hq/dendrite/roomserver/api"
 	"github.com/element-hq/dendrite/setup/jetstream"
 	userapi "github.com/element-hq/dendrite/userapi/api"
@@ -62,9 +63,9 @@ func AddPublicRoutes(
 	}
 
 	// the federationapi component is a bit unique in that it attaches public routes AND serves
-	// internal APIs (because it used to be 2 components: the 2nd being fedsender). As a result,
+	// external APIs (because it used to be 2 components: the 2nd being fedsender). As a result,
 	// the constructor shape is a bit wonky in that it is not valid to AddPublicRoutes without a
-	// concrete impl of FederationInternalAPI as the public routes and the internal API _should_
+	// concrete impl of FederationInternalAPI as the public routes and the external API _should_
 	// be the same thing now.
 	f, ok := fedAPI.(*internal.FederationInternalAPI)
 	if !ok {
@@ -81,7 +82,7 @@ func AddPublicRoutes(
 	)
 }
 
-// NewInternalAPI returns a concerete implementation of the internal API. Callers
+// NewInternalAPI returns a concerete implementation of the external API. Callers
 // can call functions directly on the returned API or via an HTTP interface using AddInternalRoutes.
 func NewInternalAPI(
 	processContext *process.ProcessContext,
