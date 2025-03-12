@@ -12,6 +12,7 @@ import (
 	"crypto/rand"
 	"encoding/hex"
 	"fmt"
+	"github.com/ike20013/dendrite/federationapi/api"
 	"net"
 	"path/filepath"
 	"strings"
@@ -23,7 +24,6 @@ import (
 	"github.com/ike20013/dendrite/cmd/dendrite-demo-yggdrasil/signing"
 	"github.com/ike20013/dendrite/external/httputil"
 	"github.com/ike20013/dendrite/external/sqlutil"
-	"github.com/ike20013/dendrite/federationapi/
 	"github.com/ike20013/dendrite/setup/process"
 	userapiAPI "github.com/ike20013/dendrite/userapi/api"
 	"github.com/matrix-org/gomatrixserverlib"

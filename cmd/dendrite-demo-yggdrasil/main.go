@@ -13,20 +13,22 @@ import (
 	"encoding/hex"
 	"flag"
 	"fmt"
+	"github.com/ike20013/dendrite/federationapi/api"
 	"net"
 	"net/http"
 	"os"
 	"path/filepath"
 	"time"
 
+	"github.com/getsentry/sentry-go"
 	"github.com/ike20013/dendrite/external/caching"
 	"github.com/ike20013/dendrite/external/sqlutil"
 	"github.com/ike20013/dendrite/setup/jetstream"
 	"github.com/ike20013/dendrite/setup/process"
-	"github.com/getsentry/sentry-go"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 
+	"github.com/gorilla/mux"
 	"github.com/ike20013/dendrite/appservice"
 	"github.com/ike20013/dendrite/cmd/dendrite-demo-yggdrasil/embed"
 	"github.com/ike20013/dendrite/cmd/dendrite-demo-yggdrasil/signing"
@@ -35,7 +37,6 @@ import (
 	"github.com/ike20013/dendrite/external"
 	"github.com/ike20013/dendrite/external/httputil"
 	"github.com/ike20013/dendrite/federationapi"
-	"github.com/ike20013/dendrite/fed
 	"github.com/ike20013/dendrite/roomserver"
 	"github.com/ike20013/dendrite/setup"
 	basepkg "github.com/ike20013/dendrite/setup/base"
@@ -43,7 +44,6 @@ import (
 	"github.com/ike20013/dendrite/setup/mscs"
 	"github.com/ike20013/dendrite/test"
 	"github.com/ike20013/dendrite/userapi"
-	"github.com/gorilla/mux"
 	"github.com/sirupsen/logrus"
 )
 

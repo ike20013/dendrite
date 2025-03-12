@@ -21,7 +21,6 @@ import (
 	"github.com/ike20013/dendrite/external/caching"
 	federationAPI "github.com/ike20013/dendrite/federationapi/api"
 	"github.com/ike20013/dendrite/federationapi/consumers"
-	_ "github.com/ike20013/dendrite/federationapi/internal"
 	"github.com/ike20013/dendrite/federationapi/producers"
 	"github.com/ike20013/dendrite/federationapi/queue"
 	"github.com/ike20013/dendrite/federationapi/statistics"

@@ -8,9 +8,9 @@ package internal
 
 import (
 	"context"
+	"github.com/ike20013/dendrite/federationapi/storage/shared/receipt"
 
 	"github.com/ike20013/dendrite/external"
-	"github.com/ike20013/dendrite/federationapi
 	"github.com/ike20013/dendrite/relayapi/api"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/fclient"

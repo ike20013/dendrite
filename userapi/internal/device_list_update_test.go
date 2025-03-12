@@ -10,6 +10,7 @@ import (
 	"context"
 	"crypto/ed25519"
 	"fmt"
+	"github.com/ike20013/dendrite/federationapi/statistics"
 	"io"
 	"net/http"
 	"net/url"
@@ -22,7 +23,6 @@ import (
 	"github.com/ike20013/dendrite/external/caching"
 	"github.com/ike20013/dendrite/external/sqlutil"
 	api2 "github.com/ike20013/dendrite/federationapi/api"
-	"github.com/ike20013/dendrite/fed
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/fclient"
 	"github.com/matrix-org/gomatrixserverlib/spec"

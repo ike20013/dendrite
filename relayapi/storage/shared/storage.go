@@ -11,10 +11,10 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
+	"github.com/ike20013/dendrite/federationapi/storage/shared/receipt"
 
 	"github.com/ike20013/dendrite/external/caching"
 	"github.com/ike20013/dendrite/external/sqlutil"
-	"github.com/ike20013/dendrite/federationapi/storage/sh
 	"github.com/ike20013/dendrite/relayapi/storage/tables"
 	"github.com/matrix-org/gomatrixserverlib"
 	"github.com/matrix-org/gomatrixserverlib/spec"

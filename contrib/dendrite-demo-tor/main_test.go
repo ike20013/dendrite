@@ -13,7 +13,7 @@ import (
 // Run the monolith: ./monolith.debug -test.coverprofile=/somewhere/to/dump/integrationcover.out DEVEL --config dendrite.yaml
 // Generate HTML with coverage: go tool cover -html=/somewhere/where/there/is/integrationcover.out -o cover.html
 // Source: https://dzone.com/articles/measuring-integration-test-coverage-rate-in-pouchc
-func TestMain(t *testing.T) {
+func TestMain(m *testing.M) {
 	var args []string
 
 	for _, arg := range os.Args {
@@ -29,7 +29,7 @@ func TestMain(t *testing.T) {
 	if len(args) <= 1 {
 		return
 	}
-	t.Log(args)
+	//t.Log(args)
 
 	waitCh := make(chan int, 1)
 	os.Args = args

@@ -27,7 +27,7 @@ import (
 
 	"github.com/ike20013/dendrite/federationapi"
 	"github.com/ike20013/dendrite/federationapi/api"
-	"github.com/ike20013/dendrite/federationapi/internal"
+	internal "github.com/ike20013/dendrite/federationapi/internal"
 	rsapi "github.com/ike20013/dendrite/roomserver/api"
 	"github.com/ike20013/dendrite/roomserver/types"
 	"github.com/ike20013/dendrite/setup/jetstream"

@@ -12,12 +12,15 @@ import (
 	"crypto/tls"
 	"encoding/hex"
 	"fmt"
+	"github.com/ike20013/dendrite/federationapi/producers"
 	"net"
 	"net/http"
 	"path/filepath"
 	"sync"
 	"time"
 
+	"github.com/gorilla/mux"
+	"github.com/gorilla/websocket"
 	"github.com/ike20013/dendrite/appservice"
 	"github.com/ike20013/dendrite/cmd/dendrite-demo-pinecone/conn"
 	"github.com/ike20013/dendrite/cmd/dendrite-demo-pinecone/embed"
@@ -30,7 +33,6 @@ import (
 	"github.com/ike20013/dendrite/external/sqlutil"
 	"github.com/ike20013/dendrite/federationapi"
 	federationAPI "github.com/ike20013/dendrite/federationapi/api"
-	"github.com/element-hq/dendr
 	"github.com/ike20013/dendrite/relayapi"
 	relayAPI "github.com/ike20013/dendrite/relayapi/api"
 	"github.com/ike20013/dendrite/roomserver"
@@ -41,8 +43,6 @@ import (
 	"github.com/ike20013/dendrite/setup/process"
 	"github.com/ike20013/dendrite/userapi"
 	userAPI "github.com/ike20013/dendrite/userapi/api"
-	"github.com/gorilla/mux"
-	"github.com/gorilla/websocket"
 	"github.com/matrix-org/gomatrixserverlib/spec"
 	"github.com/sirupsen/logrus"
 

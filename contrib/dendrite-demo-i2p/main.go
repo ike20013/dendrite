@@ -8,17 +8,16 @@ package main
 
 import (
 	"flag"
+	"github.com/ike20013/dendrite/setup/process"
 	"os"
 	"time"
 
 	"github.com/getsentry/sentry-go"
-	"gith
 	"github.com/ike20013/dendrite/external"
 	"github.com/ike20013/dendrite/external/caching"
 	"github.com/ike20013/dendrite/external/httputil"
 	"github.com/ike20013/dendrite/external/sqlutil"
 	"github.com/ike20013/dendrite/setup/jetstream"
-	"github.com/getsentry/sentry-go"
 	"github.com/matrix-org/gomatrixserverlib/fclient"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/sirupsen/logrus"

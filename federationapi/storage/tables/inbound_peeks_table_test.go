@@ -2,14 +2,13 @@ package tables_test
 
 import (
 	"context"
+	"github.com/ike20013/dendrite/federationapi/storage/tables"
 	"reflect"
 	"testing"
 
 	"github.com/ike20013/dendrite/external/sqlutil"
-	"github.com/
 	"github.com/ike20013/dendrite/federationapi/storage/postgres"
 	"github.com/ike20013/dendrite/federationapi/storage/sqlite3"
-	"github.com/ike20013/dendrite/external/sqlutil"
 	"github.com/ike20013/dendrite/setup/config"
 	"github.com/ike20013/dendrite/test"
 	"github.com/matrix-org/gomatrixserverlib"
